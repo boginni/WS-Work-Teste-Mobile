@@ -32,11 +32,16 @@ dependencies:
   flutter_modular: ^6.3.2
   dio: ^5.4.1
   google_fonts: ^6.2.0
+  firebase_auth: ^4.16.0
+  firebase_core: ^2.24.2
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  test: ^1.24.0
+  mockito: ^5.0.0
+  build_runner: ^2.0.0
   flutter_lints: ^3.0.0
 
 flutter:
