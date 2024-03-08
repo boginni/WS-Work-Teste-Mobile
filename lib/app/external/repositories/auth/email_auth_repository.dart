@@ -3,6 +3,7 @@ import 'package:ws_work_test_mobile/app/domain/dto/params/auth_param.dart';
 
 import '../../../domain/dto/entities/user/user_credential_entity.dart';
 import '../../../domain/repositories/auth_repository.dart';
+import '../../handlers/firebase_auth_exception_handler.dart';
 
 class EmailAuthRepository implements AuthRepository {
   final FirebaseAuth firebaseAuth;
@@ -22,7 +23,7 @@ class EmailAuthRepository implements AuthRepository {
         token: token!,
       );
     } on FirebaseAuthException catch (e) {
-      throw Exception(e.message);
+      throw FirebaseAuthExceptionHandler(e).message;
     }
   }
 
@@ -39,7 +40,7 @@ class EmailAuthRepository implements AuthRepository {
         password: param.password,
       );
     } on FirebaseAuthException catch (e) {
-      throw Exception(e.message);
+      throw FirebaseAuthExceptionHandler(e).message;
     }
   }
 }

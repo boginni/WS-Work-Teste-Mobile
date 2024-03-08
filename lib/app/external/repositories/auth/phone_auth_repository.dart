@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ws_work_test_mobile/app/domain/dto/params/auth_param.dart';
+import 'package:ws_work_test_mobile/app/domain/errors/auth/auth_error.dart';
 
 import '../../../domain/dto/entities/user/user_credential_entity.dart';
 import '../../../domain/repositories/auth_repository.dart';
+import '../../handlers/firebase_auth_exception_handler.dart';
 
 ConfirmationResult? _confirmationResult;
 
@@ -15,7 +17,7 @@ class PhoneAuthRepository implements AuthRepository {
   Future<UserCredentialEntity> signIn(AuthParam param) async {
     try {
       if (_confirmationResult == null) {
-        throw Exception('ConfirmationResult is null');
+        throw const InternalAuthError('ConfirmationResult is null');
       }
 
       final user = await _confirmationResult!.confirm(param.verificationId);
@@ -28,7 +30,7 @@ class PhoneAuthRepository implements AuthRepository {
         token: token!,
       );
     } on FirebaseAuthException catch (e) {
-      throw Exception(e.message);
+      throw FirebaseAuthExceptionHandler(e).message;
     }
   }
 
@@ -41,7 +43,7 @@ class PhoneAuthRepository implements AuthRepository {
 
       return;
     } on FirebaseAuthException catch (e) {
-      throw Exception(e.message);
+      throw FirebaseAuthExceptionHandler(e).message;
     }
   }
 

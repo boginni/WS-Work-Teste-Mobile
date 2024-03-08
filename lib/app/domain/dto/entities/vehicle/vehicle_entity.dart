@@ -1,6 +1,6 @@
 import '../entity.dart';
 
-abstract class VehicleEntity implements Entity {
+class VehicleEntity implements Entity {
   final int id;
   final int timestampCadastro;
   final int modeloId;
@@ -25,4 +25,32 @@ abstract class VehicleEntity implements Entity {
     required this.valor,
   });
 
+  factory VehicleEntity.fromJson(dynamic json) {
+    return VehicleEntity(
+      id: json['id'],
+      timestampCadastro: json['timestamp_cadastro'],
+      modeloId: json['modelo_id'],
+      ano: json['ano'],
+      combustivel: json['combustivel'],
+      numPortas: json['num_portas'],
+      cor: json['cor'],
+      nomeModelo: json['nome_modelo'],
+      valor: json['valor'],
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'timestamp_cadastro': timestampCadastro,
+      'modelo_id': modeloId,
+      'ano': ano,
+      'combustivel': combustivel,
+      'num_portas': numPortas,
+      'cor': cor,
+      'nome_modelo': nomeModelo,
+      'valor': valor,
+    };
+  }
 }
