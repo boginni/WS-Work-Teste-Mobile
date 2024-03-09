@@ -19,8 +19,8 @@ void main() {
         phoneNumber: '1234567890',
       );
 
-      expect(authParams.password, throwsA(isA<Error>()));
-      expect(authParams.phoneNumber, 1234567890);
+      expect(() =>authParams.password, throwsA(isA<Error>()));
+      expect(authParams.phoneNumber, '1234567890');
       expect(() => authParams.email, throwsA(isA<Error>()));
     });
 
