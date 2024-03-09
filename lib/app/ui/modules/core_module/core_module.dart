@@ -6,4 +6,5 @@ class CoreModule extends Module {
   void exportedBinds(Injector i) {
 
   }
+
 }
