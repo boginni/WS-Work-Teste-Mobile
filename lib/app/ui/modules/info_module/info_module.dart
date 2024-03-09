@@ -1,13 +1,13 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'home_wire.dart';
+import 'info_wire.dart';
 
-class HomeModule extends Module {
+class InfoModule extends Module {
   @override
   void routes(RouteManager r) {
     r.child(
       '/',
-      child: (context) => const HomeWire(),
+      child: (context) => const InfoWire(),
     );
   }
 }
