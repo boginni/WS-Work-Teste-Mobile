@@ -37,6 +37,7 @@ dependencies:
   shared_preferences: ^2.2.2
   http: ^1.2.1
   firebase_crashlytics: ^3.4.9
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:
