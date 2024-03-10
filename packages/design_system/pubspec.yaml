@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  skeletons: ^0.0.3
 
 
 dev_dependencies:
