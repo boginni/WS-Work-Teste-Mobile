@@ -10,12 +10,19 @@ Future<void> openMailApp(BuildContext context) async {
   }
 
   final bool cannotOpen = result.didOpen == false && result.canOpen == false;
+  final bool couldOpen = result.didOpen == true || result.canOpen == true;
 
   if (cannotOpen) {
     await _showNoMailAppsDialog(context);
     return;
   }
 
+  if (couldOpen && result.options.length > 1) {
+    await _showEmailAppPickerDialog(context, result);
+  }
+}
+
+Future<void> _showEmailAppPickerDialog(BuildContext context, OpenMailAppResult result) async {
   await showDialog(
     context: context,
     builder: (_) {

@@ -12,25 +12,25 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        title: Text(context.appLocalizations.sign_up),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: <Widget>[
           Text(
-            'Create an account',
+            context.appLocalizations.create_an_account,
             style: context.textTheme.titleLarge,
           ),
-          const Text(
-            'Enter your email and password to create an account',
+          Text(
+            context.appLocalizations.enter_your_email_and_password_to_create_an_account,
           ),
           const SizedBox(
             height: 16,
           ),
           TextFormField(
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.email),
-              labelText: 'Email',
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.email),
+              labelText: context.appLocalizations.email,
               hintText: '',
             ),
           ),
@@ -38,9 +38,9 @@ class SignUpPage extends StatelessWidget {
             height: 16,
           ),
           TextFormField(
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.lock),
-              labelText: 'Password',
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.lock),
+              labelText: context.appLocalizations.password,
               hintText: '',
             ),
           ),
@@ -48,9 +48,9 @@ class SignUpPage extends StatelessWidget {
             height: 16,
           ),
           TextFormField(
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.lock),
-              labelText: 'Password',
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.lock),
+              labelText: context.appLocalizations.confirm_password,
               hintText: '',
             ),
           ),
@@ -61,7 +61,7 @@ class SignUpPage extends StatelessWidget {
             onPressed: () {
               Modular.to.pushReplacementNamed(AppModule.auth + AuthModule.confirmEmail);
             },
-            child: const Text('Sign up'),
+            child: Text(context.appLocalizations.sign_up),
           )
         ],
       ),

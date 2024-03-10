@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 
 class PhoneSignInForm extends StatelessWidget {
   const PhoneSignInForm({super.key});
@@ -8,9 +9,9 @@ class PhoneSignInForm extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
-          decoration: const InputDecoration(
-            prefixIcon: Icon(Icons.phone),
-            labelText: 'Phone',
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.phone),
+            labelText: context.appLocalizations.phone,
             hintText: '',
           ),
         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
+import 'package:ws_work_test_mobile/app/ui/services/open_mail_service.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   const ResetPasswordPage({super.key});
@@ -8,25 +10,27 @@ class ResetPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reset Password'),
+        title: Text(
+          context.appLocalizations.forgot_password,
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: <Widget>[
           Text(
-            'Reset Password',
+            context.appLocalizations.reset_password,
             style: context.textTheme.titleLarge,
           ),
-          const Text(
-            'Enter your email to reset your password',
+          Text(
+            context.appLocalizations.enter_your_email_to_reset_your_password,
           ),
           const SizedBox(
             height: 16,
           ),
           TextFormField(
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.email),
-              labelText: 'Email',
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.email),
+              labelText: context.appLocalizations.email,
               hintText: '',
             ),
           ),
@@ -38,9 +42,9 @@ class ResetPasswordPage extends StatelessWidget {
               Expanded(
                 child: OutlinedButton(
                   onPressed: () {
-                    // open email
+                    openMailApp(context);
                   },
-                  child: const Text('Open Email'),
+                  child: Text(context.appLocalizations.open_mail_app),
                 ),
               ),
               const SizedBox(
@@ -48,8 +52,10 @@ class ResetPasswordPage extends StatelessWidget {
               ),
               Expanded(
                 child: FilledButton(
-                  onPressed: () {},
-                  child: const Text('Reset Password'),
+                  onPressed: () {
+                    /// TODO: Implement reset password
+                  },
+                  child: Text(context.appLocalizations.reset_password),
                 ),
               ),
             ],
@@ -57,17 +63,17 @@ class ResetPasswordPage extends StatelessWidget {
           Visibility(
             child: RichText(
               text: TextSpan(
-                text: 'We have sent an email to ',
+                text: context.appLocalizations.we_have_sent_an_email_to,
                 style: context.textTheme.labelSmall,
                 children: [
                   TextSpan(
-                    text: 'email',
+                    text: ' email ',
                     style: context.textTheme.labelSmall?.copyWith(
                       color: context.colorScheme.primary,
                     ),
                   ),
                   TextSpan(
-                    text: ' Check your email and click on the link to reset your password',
+                    text: context.appLocalizations.check_your_email_and_open_the_link_to_reset_your_password,
                   ),
                 ],
               ),

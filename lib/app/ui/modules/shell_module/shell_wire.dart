@@ -43,7 +43,7 @@ class _ShellWireState extends State<ShellWire> {
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
-        title: const Text('Ws Work Test Mobile'),
+        title: Text('Ws Work Test Mobile'),
         actions: [
           IconButton(
             onPressed: () {

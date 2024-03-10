@@ -11,18 +11,18 @@ class DeleteAccountConfirmDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Delete Account'),
-      content: const Text('Are you sure you want to delete your account?'),
+      title: Text('Delete Account'),
+      content: Text('Are you sure you want to delete your account?'),
       actions: [
         TextButton(
           onPressed: () {
             Modular.to.pop();
           },
-          child: const Text('Cancel'),
+          child: Text('Cancel'),
         ),
         TextButton(
           onPressed: onConfirm,
-          child: const Text('Delete'),
+          child: Text('Delete'),
         ),
       ],
     );

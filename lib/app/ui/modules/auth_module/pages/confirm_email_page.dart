@@ -37,7 +37,7 @@ class ConfirmEmailPage extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: context.appLocalizations.check_your_email_and_on_the_link_to_reset_your_password,
+                  text: context.appLocalizations.check_your_email_and_open_the_link_to_confirm_your_email,
                 ),
               ],
             ),

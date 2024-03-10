@@ -35,7 +35,7 @@ class _SignInPageState extends State<SignInPage> {
               onPressed: () {
                 Navigator.pushReplacementNamed(context, AppModule.shell);
               },
-              child: const Text('Sign In'),
+              child: Text(context.appLocalizations.sign_in),
             ),
             const SizedBox(
               height: 16,
@@ -46,7 +46,7 @@ class _SignInPageState extends State<SignInPage> {
                 ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.account_circle),
-                  label: const Text('Google'),
+                  label: Text(context.appLocalizations.google),
                 ),
                 const SizedBox(
                   width: 16,
@@ -54,7 +54,7 @@ class _SignInPageState extends State<SignInPage> {
                 ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.account_circle),
-                  label: const Text('Anonymous'),
+                  label: Text(context.appLocalizations.anonymous),
                 ),
               ],
             ),
@@ -62,7 +62,7 @@ class _SignInPageState extends State<SignInPage> {
               height: 16,
             ),
             Text(
-              'You Don\'t need to sign up when you use Google, Phone or Anonymous login.',
+              context.appLocalizations.you_dont_need_to_sign_up_when_using_google_phone_or_anonymous,
               style: context.textTheme.labelSmall,
               textAlign: TextAlign.center,
             ),
@@ -83,12 +83,12 @@ class _SignInPageState extends State<SignInPage> {
               height: 16,
             ),
             Text(
-              'Welcome to Ws Work Test Mobile!',
+              context.appLocalizations.welcome_to_ws_work_test_mobile,
               style: context.textTheme.titleLarge,
               textAlign: TextAlign.center,
             ),
-            const Text(
-              'Please, login to continue.',
+            Text(
+              context.appLocalizations.please_sign_in_to_continue,
               textAlign: TextAlign.center,
             ),
             const SizedBox(
@@ -96,14 +96,14 @@ class _SignInPageState extends State<SignInPage> {
             ),
             // segmented button to select email or phone
             SegmentedButton(
-              segments: const [
+              segments: [
                 ButtonSegment(
                   value: 0,
-                  label: Text('Email'),
+                  label: Text(context.appLocalizations.email),
                 ),
                 ButtonSegment(
                   value: 1,
-                  label: Text('Phone'),
+                  label: Text(context.appLocalizations.phone),
                 ),
               ],
               multiSelectionEnabled: false,

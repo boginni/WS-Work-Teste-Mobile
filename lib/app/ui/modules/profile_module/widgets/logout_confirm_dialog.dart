@@ -12,18 +12,18 @@ class LogoutConfirmDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Logout'),
-      content: const Text('Are you sure you want to logout?'),
+      title: Text('Logout'),
+      content: Text('Are you sure you want to logout?'),
       actions: [
         TextButton(
           onPressed: () {
             Modular.to.pop();
           },
-          child: const Text('Cancel'),
+          child: Text('Cancel'),
         ),
         TextButton(
           onPressed: onConfirm,
-          child: const Text('Logout'),
+          child: Text('Logout'),
         ),
       ],
     );

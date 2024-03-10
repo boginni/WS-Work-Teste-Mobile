@@ -1,7 +1,23 @@
 {
   "locale_lang": "English",
+  "sign_in": "Sign In",
+  "sign_up": "Sign Up",
+  "google": "Google",
+  "facebook": "Facebook",
+  "anonymous": "Anonymous",
   "open_mail_app": "Open Mail App",
   "go_to_home": "Go to Home",
+  "email": "Email",
+  "phone": "Phone",
+  "password": "Password",
+  "confirm_password": "Confirm Password",
+  "welcome_to_ws_work_test_mobile": "Welcome to WS Work Test Mobile!",
+  "ws_work" : "WS Work",
+  "test_mobile" : "Test Mobile",
+  "please_sign_in_to_continue": "Please sign in to continue",
+  "create_an_account": "Create an Account",
+  "enter_your_email_and_password_to_create_an_account": "Enter your email and password to create an account",
+  "you_dont_need_to_sign_up_when_using_google_phone_or_anonymous": "You don't need to sign up when using Google, Phone or Anonymous",
   "confirm_email": "Confirm Email",
   "forgot_password_ask": "Forgot Password?",
   "forgot_password": "Forgot Password",
@@ -10,5 +26,6 @@
   "no_mail_app_installed": "No mail app installed",
   "ok": "OK",
   "we_have_sent_an_email_to": "We have sent an email to",
-  "check_your_email_and_on_the_link_to_reset_your_password": "Check your email and click on the link to reset your password"
+  "check_your_email_and_open_the_link_to_reset_your_password": "Check your email and click on the link to reset your password",
+  "check_your_email_and_open_the_link_to_confirm_your_email": "Check your email and click on the link to confirm your email"
 }

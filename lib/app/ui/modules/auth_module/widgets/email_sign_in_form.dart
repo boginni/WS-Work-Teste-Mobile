@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 
 import '../auth_module.dart';
 
@@ -11,9 +12,9 @@ class EmailSignInForm extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
-          decoration: const InputDecoration(
-            prefixIcon: Icon(Icons.email),
-            labelText: 'Email',
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.email),
+            labelText: context.appLocalizations.email,
             hintText: '',
           ),
         ),
@@ -22,10 +23,10 @@ class EmailSignInForm extends StatelessWidget {
         ),
         TextFormField(
           obscureText: true,
-          decoration: const InputDecoration(
-            prefixIcon: Icon(Icons.lock),
-            suffixIcon: Icon(Icons.visibility_off),
-            labelText: 'Password',
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.lock),
+            suffixIcon: const Icon(Icons.visibility_off),
+            labelText: context.appLocalizations.password,
             hintText: '',
           ),
         ),
@@ -40,7 +41,7 @@ class EmailSignInForm extends StatelessWidget {
                 onPressed: () {
                   Modular.to.pushNamed('.${AuthModule.resetPassword}');
                 },
-                child: const Text('Forgot password?'),
+                child: Text(context.appLocalizations.forgot_password_ask),
               ),
             ),
             const SizedBox(
@@ -51,7 +52,7 @@ class EmailSignInForm extends StatelessWidget {
                 onPressed: () {
                   Modular.to.pushNamed('.${AuthModule.signUp}');
                 },
-                child: const Text('Sign Up'),
+                child: Text(context.appLocalizations.sign_up),
               ),
             )
           ],

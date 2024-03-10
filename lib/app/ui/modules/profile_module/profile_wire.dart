@@ -48,13 +48,13 @@ class _ProfileWireState extends State<ProfileWire> {
           //delete account list tile
           ListTile(
             leading: const Icon(Icons.delete),
-            title: const Text('Delete Account'),
+            title: Text('Delete Account'),
             onTap: _onDeleteAccount,
           ),
 
           ListTile(
             leading: const Icon(Icons.logout),
-            title: const Text('Logout'),
+            title: Text('Logout'),
             onTap: _onLogout,
           ),
         ],
