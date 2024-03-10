@@ -30,7 +30,7 @@ class AuthModule extends Module {
 
     r.child(
       confirmEmail,
-      child: (context) => const ConfirmEmailPage(),
+      child: (context) => const ConfirmEmailPage(email: 'email',),
     );
 
     r.child(

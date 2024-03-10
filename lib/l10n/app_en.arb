@@ -1,3 +1,14 @@
 {
-  "locale_lang" : "English"
+  "locale_lang": "English",
+  "open_mail_app": "Open Mail App",
+  "go_to_home": "Go to Home",
+  "confirm_email": "Confirm Email",
+  "forgot_password_ask": "Forgot Password?",
+  "forgot_password": "Forgot Password",
+  "enter_your_email_to_reset_your_password": "Enter your email to reset your password",
+  "reset_password": "Reset Password",
+  "no_mail_app_installed": "No mail app installed",
+  "ok": "OK",
+  "we_have_sent_an_email_to": "We have sent an email to",
+  "check_your_email_and_on_the_link_to_reset_your_password": "Check your email and click on the link to reset your password"
 }

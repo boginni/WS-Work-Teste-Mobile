@@ -25,13 +25,18 @@ class _AppWidgetState extends State<AppWidget> {
       Locale('en', ''),
     ];
 
-
     final theme = WsWorkTestMobileTheme();
 
     Modular.setInitialRoute(AppModule.splash);
 
     return MaterialApp.router(
       title: 'Ws Work Test Mobile',
+      localizationsDelegates: [
+        ...AppLocalizations.localizationsDelegates,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       locale: local,
       supportedLocales: supportedLocales,
       theme: theme.getLightThemeData(context),
