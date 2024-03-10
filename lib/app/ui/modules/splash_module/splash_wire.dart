@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 
 import '../../app_module.dart';
@@ -20,49 +21,63 @@ class _SplashWireState extends State<SplashWire> {
     );
   }
 
+
+  double easterEgg = 1.0;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Ws Work',
-                  style: context.textTheme.displayLarge,
+    return WillPopScope(
+      onWillPop: () async {
+        setState(() {
+          easterEgg *= 0.75;
+        });
+        return false;
+      },
+      child: Scaffold(
+        body: Stack(
+          children: [
+            Transform.scale(
+              scale: easterEgg,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      context.appLocalizations.ws_work,
+                      style: context.textTheme.displayLarge,
+                    ),
+                    Text(
+                      context.appLocalizations.test_mobile,
+                      style: context.textTheme.headlineSmall,
+                    ),
+                  ],
                 ),
-                Text(
-                  'Test Mobile',
-                  style: context.textTheme.headlineSmall,
-                ),
-              ],
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 16,
-            right: 16,
-            left: 16,
-            child: Column(
-              children: [
-                Text(
-                  'Loading...',
-                  style: context.textTheme.labelSmall,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const LinearProgressIndicator(),
-                Text(
-                  'by: Brunno Marques',
-                  style: context.textTheme.labelSmall,
-                  textAlign: TextAlign.center,
-                ),
-              ],
+            Positioned(
+              bottom: 16,
+              right: 16,
+              left: 16,
+              child: Column(
+                children: [
+                  Text(
+                    context.appLocalizations.loading,
+                    style: context.textTheme.labelSmall,
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  const LinearProgressIndicator(),
+                  Text(
+                    context.appLocalizations.by_value('Brunno Marques'),
+                    style: context.textTheme.labelSmall,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

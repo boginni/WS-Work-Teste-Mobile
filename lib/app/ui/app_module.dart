@@ -10,6 +10,11 @@ class AppModule extends Module {
   static const String settings = '/settings';
   static const String auth = '/auth';
 
+
+  static restartApp() {
+    Modular.to.pushNamedAndRemoveUntil(splash, (p0) => true);
+  }
+
   @override
   void routes(r) {
     r.module(

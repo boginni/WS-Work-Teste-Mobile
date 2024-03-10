@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/shell_module/shell_module.dart';
+import 'package:ws_work_test_mobile/app/ui/widgets/dialogs/confirm_exit_dialog.dart';
 
 import '../../app_module.dart';
 
@@ -40,37 +41,40 @@ class _ShellWireState extends State<ShellWire> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      appBar: AppBar(
-        title: Text('Ws Work Test Mobile'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Modular.to.pushNamed('/settings');
-            },
-            icon: const Icon(Icons.settings),
-          ),
-        ],
-      ),
-      body: const RouterOutlet(),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: _navigate,
-        currentIndex: _currentIndex,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Info',
-          ),
-        ],
+    return WillPopScope(
+      onWillPop: () => ConfirmExitDialog.show(context),
+      child: Scaffold(
+        extendBody: true,
+        appBar: AppBar(
+          title: Text('Ws Work Test Mobile'),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Modular.to.pushNamed('/settings');
+              },
+              icon: const Icon(Icons.settings),
+            ),
+          ],
+        ),
+        body: const RouterOutlet(),
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: _navigate,
+          currentIndex: _currentIndex,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.info),
+              label: 'Info',
+            ),
+          ],
+        ),
       ),
     );
   }

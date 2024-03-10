@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ws_work_test_mobile/app/ui/app_module.dart';
-import 'package:ws_work_test_mobile/app/ui/modules/profile_module/widgets/delete_account_confirm_dialog.dart';
-import 'package:ws_work_test_mobile/app/ui/modules/profile_module/widgets/logout_confirm_dialog.dart';
+import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
+import 'package:ws_work_test_mobile/app/ui/widgets/dialogs/delete_account_confirm_dialog.dart';
+import 'package:ws_work_test_mobile/app/ui/widgets/dialogs/logout_confirm_dialog.dart';
 
 class ProfileWire extends StatefulWidget {
   const ProfileWire({super.key});
@@ -13,31 +13,19 @@ class ProfileWire extends StatefulWidget {
 
 class _ProfileWireState extends State<ProfileWire> {
   void _onDeleteAccount() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return DeleteAccountConfirmDialog(
-          onConfirm: () {
-            Modular.to.pop();
-            Modular.to.pushNamedAndRemoveUntil(AppModule.splash, (p0) => true);
-          },
-        );
-      },
-    );
+    DeleteAccountConfirmDialog.show(context).then((value) {
+      if (value) {
+        AppModule.restartApp();
+      }
+    });
   }
 
   void _onLogout() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return LogoutConfirmDialog(
-          onConfirm: () {
-            Modular.to.pop();
-            Modular.to.pushNamedAndRemoveUntil(AppModule.splash, (p0) => true);
-          },
-        );
-      },
-    );
+    LogoutConfirmDialog.show(context).then((value) {
+      if (value) {
+        AppModule.restartApp();
+      }
+    });
   }
 
   @override
@@ -48,13 +36,13 @@ class _ProfileWireState extends State<ProfileWire> {
           //delete account list tile
           ListTile(
             leading: const Icon(Icons.delete),
-            title: Text('Delete Account'),
+            title: Text(context.appLocalizations.delete_account),
             onTap: _onDeleteAccount,
           ),
 
           ListTile(
             leading: const Icon(Icons.logout),
-            title: Text('Logout'),
+            title: Text(context.appLocalizations.logout),
             onTap: _onLogout,
           ),
         ],
