@@ -20,7 +20,7 @@ class VerticalCard extends StatelessWidget {
     );
   }
 
-  static Size size = Size(160, 260);
+  static Size size = Size(176, 260);
   static Size imageSize = Size(size.width, 160);
 
   final Widget child;
