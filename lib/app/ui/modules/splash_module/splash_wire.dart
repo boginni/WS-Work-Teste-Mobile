@@ -16,7 +16,7 @@ class _SplashWireState extends State<SplashWire> {
     super.initState();
     Future.delayed(
       const Duration(seconds: 2),
-      () => Navigator.pushReplacementNamed(context, AppModule.shell),
+      () => Navigator.pushReplacementNamed(context, AppModule.auth),
     );
   }
 
