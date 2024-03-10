@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 
-/// DISCARTED FOR NOW BECAUSE I WAS LAZY TO IMPLEMENT 
+/// DISCARDED FOR NOW BECAUSE I WAS LAZY TO IMPLEMENT
 class RememberMeSegment extends StatelessWidget {
   const RememberMeSegment({
     super.key,
@@ -33,9 +33,7 @@ class RememberMeSegment extends StatelessWidget {
               ),
               TextSpan(
                 text: 'Terms of Service',
-                onEnter: (event) {
-                  print('Terms of Service');
-                },
+                onEnter: (event) {},
                 style: context.textTheme.labelSmall?.copyWith(
                   color: context.theme.primaryColor,
                 ),
