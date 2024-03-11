@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-abstract class DialogService {
-  Future<T?> showDialog<T>(Widget child);
+typedef TextBuilder = String Function(BuildContext);
 
-  void alertSnackBar(String text);
+abstract class DialogService {
+  Future<T?> showDialog<T>(WidgetBuilder builder);
+
+  void alertSnackBar(TextBuilder builder);
 }

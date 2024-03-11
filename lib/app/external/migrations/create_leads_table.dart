@@ -6,14 +6,14 @@ class CreateLeadsTable extends Migration {
   @override
   Future<void> down() {
     return connection.execute('''
-      DROP TABLE leads;
+      DROP TABLE user_leads;
     ''');
   }
 
   @override
   Future<void> up() {
     return connection.execute('''
-      CREATE TABLE IF NOT EXISTS leads (
+      CREATE TABLE IF NOT EXISTS user_leads (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         sync_status BOOLEAN NOT NULL DEFAULT 0,
         user_id INTEGER NOT NULL,
