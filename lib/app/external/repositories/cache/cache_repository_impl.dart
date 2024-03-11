@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ws_work_test_mobile/app/domain/dto/entities/cache_entity.dart';
 
-import '../../domain/repositories/cache_repository.dart';
+import '../../../domain/repositories/cache_repository.dart';
 
 class CacheRepositoryImpl extends CacheRepository {
   final SharedPreferences sharedPreferences;

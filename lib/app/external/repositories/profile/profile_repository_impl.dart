@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../domain/dto/entities/user/user_entity.dart';
-import '../../domain/repositories/profile_repository.dart';
+import '../../../domain/dto/entities/user/user_entity.dart';
+import '../../../domain/repositories/profile_repository.dart';
 
 class ProfileRepositoryImpl implements ProfileRepository {
   final FirebaseAuth _auth;

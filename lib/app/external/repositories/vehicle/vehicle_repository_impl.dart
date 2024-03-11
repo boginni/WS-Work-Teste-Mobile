@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-import '../../domain/dto/entities/vehicle/vehicle_entity.dart';
-import '../../domain/repositories/vehicle_repository.dart';
+import '../../../domain/dto/entities/vehicle/vehicle_entity.dart';
+import '../../../domain/repositories/vehicle_repository.dart';
 
 class VehicleRepositoryImpl extends VehicleRepository {
   final Dio dio;

@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 import 'package:ws_work_test_mobile/app/domain/repositories/cache_repository.dart';
 import 'package:ws_work_test_mobile/app/domain/use_cases/check_internet_use_case.dart';
 import 'package:ws_work_test_mobile/app/external/interceptors/dio_offline_cache_interceptor.dart';
-import 'package:ws_work_test_mobile/app/external/repositories/cache_repository_impl.dart';
+import 'package:ws_work_test_mobile/app/external/repositories/cache/cache_repository_impl.dart';
 import 'package:ws_work_test_mobile/app/external/use_cases/check_internet_connection_impl.dart';
 
 import 'dio_offline_cache_interceptor_test.mocks.dart';
