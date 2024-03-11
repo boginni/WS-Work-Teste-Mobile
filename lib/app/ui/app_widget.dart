@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ws_work_test_mobile/app/ui/app_module.dart';
 import 'package:ws_work_test_mobile/app/ui/theme/ws_work_test_mobile_theme.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ws_work_test_mobile/app/ui/widgets/providers/providers.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -13,10 +14,22 @@ class AppWidget extends StatefulWidget {
 }
 
 class _AppWidgetState extends State<AppWidget> {
+  late Locale local;
+
+  @override
+  void initState() {
+    super.initState();
+    local = WidgetsBinding.instance.platformDispatcher.locale;
+  }
+
+  void onLocaleChanged(Locale locale) {
+    setState(() {
+      local = locale;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var local = WidgetsBinding.instance.platformDispatcher.locale;
-
     const supportedLocales = [
       ...AppLocalizations.supportedLocales,
       Locale('pt', 'BR'),
@@ -29,19 +42,22 @@ class _AppWidgetState extends State<AppWidget> {
 
     Modular.setInitialRoute(AppModule.splash);
 
-    return MaterialApp.router(
-      title: 'Ws Work Test Mobile',
-      localizationsDelegates: [
-        ...AppLocalizations.localizationsDelegates,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      locale: local,
-      supportedLocales: supportedLocales,
-      theme: theme.getLightThemeData(context),
-      darkTheme: theme.getDarkThemeData(context),
-      routerConfig: Modular.routerConfig,
+    return LocaleProvider(
+      onLocaleChanged: onLocaleChanged,
+      child: MaterialApp.router(
+        title: 'Ws Work Test Mobile',
+        localizationsDelegates: const [
+          ...AppLocalizations.localizationsDelegates,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        locale: local,
+        supportedLocales: supportedLocales,
+        theme: theme.getLightThemeData(context),
+        // darkTheme: theme.getDarkThemeData(context),
+        routerConfig: Modular.routerConfig,
+      ),
     );
   }
 }

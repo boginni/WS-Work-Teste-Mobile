@@ -84,7 +84,7 @@ class VehicleBigVerticalCard extends StatelessWidget {
                     ),
                     SmallChip(
                       label: Text(
-                        context.appLocalizations.doors_value(vehicle.numPortas),
+                        context.appLocalizations.doors_x(vehicle.numPortas),
                         style: context.textTheme.bodySmall?.copyWith(
                           color: context.colorScheme.onPrimary,
                         ),

@@ -43,7 +43,7 @@ class _SplashWireState extends State<SplashWire> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      context.appLocalizations.ws_work,
+                      'Ws Work',
                       style: context.textTheme.displayLarge,
                     ),
                     Text(
@@ -69,7 +69,7 @@ class _SplashWireState extends State<SplashWire> {
                   ),
                   const LinearProgressIndicator(),
                   Text(
-                    context.appLocalizations.by_value('Brunno Marques'),
+                    context.appLocalizations.by_x('Brunno Marques'),
                     style: context.textTheme.labelSmall,
                     textAlign: TextAlign.center,
                   ),
