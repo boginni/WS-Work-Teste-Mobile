@@ -11,4 +11,9 @@ class MockProfileRepository implements ProfileRepository {
       name: 'John Doe',
     );
   }
+
+  @override
+  Future<void> sendEmailVerification() {
+    return Future.value();
+  }
 }

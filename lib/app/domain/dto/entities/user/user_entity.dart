@@ -3,10 +3,12 @@ import '../entity.dart';
 class UserEntity implements Entity {
   final String id;
   final String name;
+  final String? email;
 
   const UserEntity({
     required this.id,
     required this.name,
+    this.email,
   });
 
   @override
@@ -14,6 +16,7 @@ class UserEntity implements Entity {
     return {
       'id': id,
       'name': name,
+      'email': email,
     };
   }
 }

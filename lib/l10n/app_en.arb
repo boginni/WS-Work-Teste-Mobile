@@ -15,6 +15,8 @@
   "invalid_credentials_error": "Invalid Credentials",
   "wrong_credentials_error": "Wrong Credentials",
   "device_language": "Device Language",
+  "password_must_have_at_least_6_characters": "Password must have at least 6 characters",
+  "passwords_do_not_match": "Passwords do not match",
   "language": "Language",
   "sign_in": "Sign In",
   "sign_up": "Sign Up",

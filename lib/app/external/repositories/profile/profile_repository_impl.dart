@@ -21,4 +21,15 @@ class ProfileRepositoryImpl implements ProfileRepository {
       name: user.displayName ?? '',
     );
   }
+
+  @override
+  Future<void> sendEmailVerification() {
+    final user = auth.currentUser;
+
+    if (user == null) {
+      throw Exception('Usuário não encontrado');
+    }
+
+    return user.sendEmailVerification();
+  }
 }
