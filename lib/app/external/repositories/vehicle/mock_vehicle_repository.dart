@@ -6,6 +6,9 @@ class MockVehicleRepository extends VehicleRepository {
 
   @override
   Future<List<VehicleEntity>> index() async {
+
+    await Future.delayed(const Duration(seconds: 2));
+
     return [
       const VehicleEntity(
         id: 1,
@@ -16,7 +19,7 @@ class MockVehicleRepository extends VehicleRepository {
         numPortas: 4,
         cor: "BEGE",
         nomeModelo: "ONIX PLUS",
-        valor: 50.000,
+        valor: 50.000 * 1000,
       ),
       const VehicleEntity(
         id: 2,
@@ -27,7 +30,7 @@ class MockVehicleRepository extends VehicleRepository {
         numPortas: 4,
         cor: "AZUL",
         nomeModelo: "JETTA",
-        valor: 49.000,
+        valor: 49.000 * 1000,
       ),
       const VehicleEntity(
         id: 3,
@@ -38,7 +41,7 @@ class MockVehicleRepository extends VehicleRepository {
         numPortas: 4,
         cor: "AZUL",
         nomeModelo: "HILLUX SW4",
-        valor: 47.500,
+        valor: 47.500 * 1000,
       ),
     ];
   }

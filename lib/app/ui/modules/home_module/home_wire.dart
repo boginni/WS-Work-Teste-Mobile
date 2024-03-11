@@ -7,9 +7,12 @@ import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/category_
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/vehicle_big_vertical_card.dart';
 
 import '../../../domain/dto/entities/vehicle/vehicle_entity.dart';
+import '../../../domain/repositories/vehicle_repository.dart';
 
 class HomeWire extends StatefulWidget {
-  const HomeWire({super.key});
+  const HomeWire({super.key, required this.vehicleRepository});
+
+  final VehicleRepository vehicleRepository;
 
   @override
   State<HomeWire> createState() => _HomeWireState();
@@ -19,6 +22,18 @@ class _HomeWireState extends State<HomeWire> {
   bool isLoading = true;
 
   List<VehicleEntity> vehicles = [];
+
+  @override
+  void initState() {
+    super.initState();
+    widget.vehicleRepository.index().then((value) {
+      setState(() {
+        vehicles = value;
+        isLoading = false;
+      });
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +119,9 @@ class _HomeWireState extends State<HomeWire> {
                     ? BigVerticalCard.skeleton()
                     : VehicleBigVerticalCard(
                         vehicle: vehicles[index],
+                        onPressed: () {
+
+                        },
                       ),
               );
             },
