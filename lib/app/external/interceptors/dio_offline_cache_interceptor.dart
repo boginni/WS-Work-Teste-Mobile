@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:ws_work_test_mobile/app/domain/repositories/cache_repository.dart';
 import 'package:ws_work_test_mobile/app/domain/use_cases/check_internet_use_case.dart';
 
 import '../../domain/dto/entities/cache_entity.dart';
+import '../../domain/providers/cache_provider.dart';
 
 class DioOfflineCacheInterceptor extends InterceptorsWrapper {
   DioOfflineCacheInterceptor({
@@ -15,7 +15,7 @@ class DioOfflineCacheInterceptor extends InterceptorsWrapper {
 
   final Duration maxCacheAge;
   final CheckInternetUseCase checkInternetUseCase;
-  final CacheRepository cacheService;
+  final CacheProvider cacheService;
 
   String getRequestId(RequestOptions options) {
     return '${options.method}${options.path}';

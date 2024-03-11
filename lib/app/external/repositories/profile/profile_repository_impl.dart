@@ -4,12 +4,13 @@ import '../../../domain/dto/entities/user/user_entity.dart';
 import '../../../domain/repositories/profile_repository.dart';
 
 class ProfileRepositoryImpl implements ProfileRepository {
-  final FirebaseAuth _auth;
+  final FirebaseAuth auth;
 
-  ProfileRepositoryImpl({required FirebaseAuth auth}) : _auth = auth;
+  const ProfileRepositoryImpl({required this.auth});
 
+  @override
   Future<UserEntity> me() async {
-    final user = _auth.currentUser;
+    final user = auth.currentUser;
 
     if (user == null) {
       throw Exception('Usuário não encontrado');

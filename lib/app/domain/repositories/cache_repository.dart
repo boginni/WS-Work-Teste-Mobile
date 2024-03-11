@@ -1,7 +1,6 @@
-import 'package:ws_work_test_mobile/app/domain/dto/entities/cache_entity.dart';
-
+/// I don't think that i will implement this because i am in shortage of time
 abstract class CacheRepository {
-  Future<CacheEntity?> get(String key);
-  
-  Future<void> put(CacheEntity data);
+  Future<void> getSettings();
+
+  Future<void> setSettings();
 }

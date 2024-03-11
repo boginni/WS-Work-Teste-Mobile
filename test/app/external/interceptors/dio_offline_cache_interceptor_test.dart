@@ -5,10 +5,10 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test/test.dart';
-import 'package:ws_work_test_mobile/app/domain/repositories/cache_repository.dart';
+import 'package:ws_work_test_mobile/app/domain/providers/cache_provider.dart';
 import 'package:ws_work_test_mobile/app/domain/use_cases/check_internet_use_case.dart';
 import 'package:ws_work_test_mobile/app/external/interceptors/dio_offline_cache_interceptor.dart';
-import 'package:ws_work_test_mobile/app/external/repositories/cache/cache_repository_impl.dart';
+import 'package:ws_work_test_mobile/app/external/provider/shared_preferences_cache_provider.dart';
 import 'package:ws_work_test_mobile/app/external/use_cases/check_internet_connection_impl.dart';
 
 import 'dio_offline_cache_interceptor_test.mocks.dart';
@@ -33,14 +33,14 @@ void main() {
     late SharedPreferences preferences;
     late Dio dio;
     late DioOfflineCacheInterceptor interceptor;
-    late CacheRepository cacheRepository;
+    late CacheProvider cacheProvider;
     late CheckInternetUseCase checkInternetUseCase;
 
     setUp(() {
       preferences = MockSharedPreferences();
       dio = Dio();
       dio.httpClientAdapter = DioAdapter();
-      cacheRepository = CacheRepositoryImpl(sharedPreferences: preferences);
+      cacheProvider = SharedPreferencesCacheProvider(sharedPreferences: preferences);
 
       checkInternetUseCase = CheckInternetUseCaseImpl(lookupFunction: () {
         return Future.value([]);
@@ -48,7 +48,7 @@ void main() {
 
       interceptor = DioOfflineCacheInterceptor(
         checkInternetUseCase: checkInternetUseCase,
-        cacheService: cacheRepository,
+        cacheService: cacheProvider,
       );
       dio.interceptors.add(interceptor);
     });
