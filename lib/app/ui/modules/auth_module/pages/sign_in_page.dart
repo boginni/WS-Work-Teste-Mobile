@@ -1,27 +1,27 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
-import 'package:ws_work_test_mobile/app/ui/modules/auth_module/widgets/email_sign_in_form.dart';
-import 'package:ws_work_test_mobile/app/ui/modules/auth_module/widgets/phone_sign_in_form.dart';
+import 'package:ws_work_test_mobile/app/ui/modules/auth_module/controllers/sign_in_controller.dart';
+import 'package:ws_work_test_mobile/app/ui/modules/auth_module/stores/sign_in_store.dart';
 import 'package:ws_work_test_mobile/app/ui/widgets/dialogs/confirm_exit_dialog.dart';
+import 'package:ws_work_test_mobile/app/ui/widgets/listenable_widget.dart';
 
 import '../../../app_module.dart';
+import '../widgets/email_sign_in_form.dart';
+import '../widgets/phone_sign_in_form.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class SignInPage extends ListenableWidget {
+  const SignInPage({
+    super.key,
+    required this.controller,
+  });
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
-}
+  Listenable get listenable => controller.signInStore;
 
-class _SignInPageState extends State<SignInPage> {
-  final _formKey = GlobalKey<FormState>();
+  final SignInController controller;
 
-  Set<int> _selected = Set<int>.from([0]);
-
-  bool get _isEmailSelected => _selected.contains(0);
+  SignInStore get store => controller.signInStore;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +35,7 @@ class _SignInPageState extends State<SignInPage> {
           shape: const CircleBorder(),
           child: const Icon(Icons.settings),
           onPressed: () {
-            Navigator.pushNamed(
-              context,
+            Modular.to.pushNamed(
               AppModule.settings,
             );
           },
@@ -49,7 +48,7 @@ class _SignInPageState extends State<SignInPage> {
             children: [
               FilledButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, AppModule.shell);
+                  controller.signIn();
                 },
                 child: Text(context.appLocalizations.sign_in),
               ),
@@ -60,7 +59,7 @@ class _SignInPageState extends State<SignInPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: null,
                     icon: const Icon(Icons.account_circle),
                     label: Text(context.appLocalizations.google),
                   ),
@@ -68,7 +67,7 @@ class _SignInPageState extends State<SignInPage> {
                     width: 16,
                   ),
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: controller.signInAnonymously,
                     icon: const Icon(Icons.account_circle),
                     label: Text(context.appLocalizations.anonymous),
                   ),
@@ -86,7 +85,7 @@ class _SignInPageState extends State<SignInPage> {
           ),
         ),
         body: Form(
-          key: _formKey,
+          key: controller.signInStore.formKey,
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: <Widget>[
@@ -110,7 +109,6 @@ class _SignInPageState extends State<SignInPage> {
               const SizedBox(
                 height: 16,
               ),
-              // segmented button to select email or phone
               SegmentedButton(
                 segments: [
                   ButtonSegment(
@@ -124,20 +122,22 @@ class _SignInPageState extends State<SignInPage> {
                 ],
                 multiSelectionEnabled: false,
                 emptySelectionAllowed: false,
-                onSelectionChanged: (Set<int> selection) {
-                  setState(() {
-                    _selected = selection;
-                  });
+                onSelectionChanged: (selected) {
+                  store.selectedSegmentedButtonSet = selected;
                 },
-                selected: _selected,
+                selected: store.selectedSegmentedButtonSet,
               ),
               const SizedBox(
                 height: 16,
               ),
               Visibility(
-                visible: _isEmailSelected,
-                replacement: const PhoneSignInForm(),
-                child: const EmailSignInForm(),
+                visible: store.isEmailSelected,
+                replacement: PhoneSignInForm(
+                  controller: controller,
+                ),
+                child: EmailSignInForm(
+                  controller: controller,
+                ),
               ),
             ],
           ),

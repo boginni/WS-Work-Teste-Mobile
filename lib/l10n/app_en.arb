@@ -2,6 +2,8 @@
   "locale_name": "English",
   "locale": "EN",
   "error": "Error",
+  "required_field": "Required Field",
+  "invalid_phone": "Invalid Phone",
   "internal_auth_error": "An internal error occurred while authenticating",
   "too_many_requests_error": "You have made too many requests",
   "invalid_email": "Invalid Email",

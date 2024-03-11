@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
-
-import '../../app_module.dart';
+import 'package:ws_work_test_mobile/app/ui/modules/splash_module/splash_controller.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
+  const SplashPage({
+    super.key,
+    required this.controller,
+  });
+
+  final SplashController controller;
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -14,10 +18,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   initState() {
     super.initState();
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => Navigator.pushReplacementNamed(context, AppModule.auth),
-    );
+    widget.controller.init();
   }
 
   double easterEgg = 1.0;
