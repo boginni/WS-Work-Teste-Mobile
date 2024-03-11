@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 
 class DeleteAccountConfirmDialog extends StatelessWidget {

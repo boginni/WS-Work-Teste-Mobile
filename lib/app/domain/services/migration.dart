@@ -16,6 +16,4 @@ abstract class Migration {
   Future<void> markMigrationAsRun() {
     return connection.markMigrationAsRun(runtimeType.toString());
   }
-
-
 }

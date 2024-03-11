@@ -6,9 +6,7 @@ import 'package:ws_work_test_mobile/app/ui/widgets/providers/global_scaffold_pro
 
 import '../../../services/failure_message_extraction_service.dart';
 
-
-
-class GlobalFailureMessageExtractionService  extends FailureMessageExtractionService {
+class GlobalFailureMessageExtractionService extends FailureMessageExtractionService {
   AppLocalizations? get _locations => GlobalScaffoldProvider.scaffoldKey.currentContext?.appLocalizations;
 
   String? extractMessage(Failure failure) {

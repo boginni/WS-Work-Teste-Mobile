@@ -21,7 +21,7 @@ class SettingsWire extends StatelessWidget {
             subtitle: Text('${context.appLocalizations.locale} - ${context.appLocalizations.locale_name}'),
             onTap: () async {
               final locale = await LanguageModal.show(context);
-              if (locale != null ) {
+              if (locale != null) {
                 LocaleProvider.of(context).onLocaleChanged(locale);
               }
             },

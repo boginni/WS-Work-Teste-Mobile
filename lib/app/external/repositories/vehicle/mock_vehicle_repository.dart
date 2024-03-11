@@ -6,7 +6,6 @@ class MockVehicleRepository extends VehicleRepository {
 
   @override
   Future<List<VehicleEntity>> index() async {
-
     await Future.delayed(const Duration(seconds: 2));
 
     return [

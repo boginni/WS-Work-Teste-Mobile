@@ -1,6 +1,6 @@
 import '../entity.dart';
 
-class UserCredentialEntity implements Entity{
+class UserCredentialEntity implements Entity {
   final String token;
   final String? refreshToken;
 

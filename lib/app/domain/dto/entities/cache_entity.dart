@@ -1,6 +1,6 @@
 import 'package:ws_work_test_mobile/app/domain/dto/entities/entity.dart';
 
-class CacheEntity extends Entity{
+class CacheEntity extends Entity {
   final String id;
   final dynamic value;
   final DateTime date;
@@ -27,6 +27,4 @@ class CacheEntity extends Entity{
       'date': date.toIso8601String(),
     };
   }
-
-
 }

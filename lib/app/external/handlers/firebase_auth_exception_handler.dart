@@ -23,6 +23,5 @@ class FirebaseAuthExceptionHandler {
       default:
         return InternalAuthError(exception.message);
     }
-
   }
 }

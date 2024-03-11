@@ -121,9 +121,7 @@ class VehicleBigVerticalCard extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
               ),
-              onPressed: () {
-
-              },
+              onPressed: () {},
               icon: const Icon(Icons.favorite_border),
             ),
           ),

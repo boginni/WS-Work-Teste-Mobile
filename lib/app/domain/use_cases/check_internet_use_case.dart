@@ -1,5 +1,3 @@
-
-
 abstract class CheckInternetUseCase {
   const CheckInternetUseCase();
 
