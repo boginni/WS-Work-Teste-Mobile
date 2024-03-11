@@ -16,7 +16,7 @@ class VehicleBigVerticalCard extends StatelessWidget {
       children: [
         BigVerticalCard(
           imageBackgroundColor: context.colorScheme.primaryContainer,
-          imageProvider: AssetImage('assets/vehicle-none.png'),
+          imageProvider: const AssetImage('assets/vehicle-none.png'),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -101,7 +101,7 @@ class VehicleBigVerticalCard extends StatelessWidget {
                     children: [
                       FilledButton(
                         onPressed: onPressed,
-                        child: const Text('Eu Quero'),
+                        child: Text(context.appLocalizations.i_want),
                       ),
                     ],
                   ),
@@ -121,7 +121,9 @@ class VehicleBigVerticalCard extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
               ),
-              onPressed: () {},
+              onPressed: () {
+
+              },
               icon: const Icon(Icons.favorite_border),
             ),
           ),
