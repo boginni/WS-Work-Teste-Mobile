@@ -5,6 +5,7 @@ import 'package:ws_work_test_mobile/app/external/repositories/auth/anonymous_aut
 import 'package:ws_work_test_mobile/app/external/repositories/auth/email_auth_repository.dart';
 import 'package:ws_work_test_mobile/app/external/repositories/auth/google_auth_repository.dart';
 import 'package:ws_work_test_mobile/app/external/repositories/auth/phone_auth_repository.dart';
+import 'package:ws_work_test_mobile/app/external/repositories/profile/profile_repository_impl.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/controllers/sign_in_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/pages/confirm_email_page.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/pages/reset_password_page.dart';
@@ -14,7 +15,6 @@ import 'package:ws_work_test_mobile/app/ui/modules/auth_module/stores/sign_in_st
 import 'package:ws_work_test_mobile/app/ui/modules/core_module/core_module.dart';
 
 import '../../../domain/repositories/auth_repository.dart';
-import '../../../external/repositories/profile/mock_profile_repository.dart';
 
 class AuthModule extends Module {
   static const String signIn = '/';
@@ -33,7 +33,7 @@ class AuthModule extends Module {
   @override
   void exportedBinds(Injector i) {
     i.addLazySingleton<ProfileRepository>(
-      MockProfileRepository.new,
+      () => ProfileRepositoryImpl(auth: FirebaseAuth.instance),
     );
 
     i.add<AuthRepository>(
