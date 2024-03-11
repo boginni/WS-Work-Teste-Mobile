@@ -1,10 +1,10 @@
-import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ws_work_test_mobile/app/ui/app_module.dart';
 import 'package:ws_work_test_mobile/app/ui/theme/ws_work_test_mobile_theme.dart';
+import 'package:ws_work_test_mobile/app/ui/widgets/providers/global_scaffold_provider.dart';
 import 'package:ws_work_test_mobile/app/ui/widgets/providers/providers.dart';
 
 class AppWidget extends StatefulWidget {
@@ -43,11 +43,10 @@ class _AppWidgetState extends State<AppWidget> {
 
     Modular.setInitialRoute(AppModule.splash);
 
-    Modular.setObservers([Asuka.asukaHeroController]);
     return LocaleProvider(
       onLocaleChanged: onLocaleChanged,
       child: MaterialApp.router(
-        builder: Asuka.builder,
+        builder: GlobalScaffoldProvider.builder,
         title: 'Ws Work Test Mobile',
         localizationsDelegates: const [
           ...AppLocalizations.localizationsDelegates,

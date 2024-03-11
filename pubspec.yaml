@@ -47,7 +47,6 @@ dependencies:
   cached_network_image: 3.3.1
   open_mail_app: ^0.4.5
   skeletons: ^0.0.3
-  asuka: ^2.2.0
 
 dev_dependencies:
   flutter_test:
