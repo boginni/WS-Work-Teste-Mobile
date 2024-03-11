@@ -18,7 +18,7 @@ class GlobalScaffoldProvider extends StatelessWidget {
     );
   };
 
-  static get scaffoldKey => _singletonKey;
+  static GlobalKey<ScaffoldState> get scaffoldKey => _singletonKey;
 
   @override
   Widget build(BuildContext context) {

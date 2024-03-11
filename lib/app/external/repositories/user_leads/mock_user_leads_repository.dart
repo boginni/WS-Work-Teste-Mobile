@@ -6,7 +6,7 @@ final List<VehicleEntity> _leads = [];
 
 class MockUserLeadsRepository extends UserLeadsRepository {
   @override
-  Future<void> create(VehicleEntity vehicleEntity) async {
+  Future<void> store(VehicleEntity vehicleEntity) async {
     _leads.add(vehicleEntity);
   }
 

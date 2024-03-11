@@ -8,9 +8,11 @@ class ConfirmEmailPage extends StatelessWidget {
   const ConfirmEmailPage({
     super.key,
     required this.email,
+    required this.openMailService,
   });
 
   final String email;
+  final OpenMailService openMailService;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,7 @@ class ConfirmEmailPage extends StatelessWidget {
               Expanded(
                 child: FilledButton(
                   onPressed: () {
-                    openMailApp(context);
+                    openMailService.openMailApp(context);
                   },
                   child: Text(context.appLocalizations.open_mail_app),
                 ),

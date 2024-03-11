@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 import 'package:ws_work_test_mobile/app/ui/services/open_mail_service.dart';
 
 class ResetPasswordPage extends StatelessWidget {
-  const ResetPasswordPage({super.key});
+  const ResetPasswordPage({
+    super.key,
+    required this.openMailService,
+  });
+
+  final OpenMailService openMailService;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +46,7 @@ class ResetPasswordPage extends StatelessWidget {
               Expanded(
                 child: OutlinedButton(
                   onPressed: () {
-                    openMailApp(context);
+                    openMailService.openMailApp(context);
                   },
                   child: Text(context.appLocalizations.open_mail_app),
                 ),

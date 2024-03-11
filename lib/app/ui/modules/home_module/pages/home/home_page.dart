@@ -7,8 +7,8 @@ import 'package:ws_work_test_mobile/app/ui/modules/home_module/home_controller.d
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/category_vertical_card.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/vehicle_big_vertical_card.dart';
 
-class HomeWire extends StatefulWidget {
-  const HomeWire({
+class HomePage extends StatefulWidget {
+  const HomePage({
     super.key,
     required this.homeController,
   });
@@ -16,10 +16,10 @@ class HomeWire extends StatefulWidget {
   final HomeController homeController;
 
   @override
-  State<HomeWire> createState() => _HomeWireState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeWireState extends State<HomeWire> {
+class _HomePageState extends State<HomePage> {
   HomeController get controller => widget.homeController;
 
   @override

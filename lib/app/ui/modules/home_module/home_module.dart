@@ -32,7 +32,7 @@ class HomeModule extends Module {
   void routes(RouteManager r) {
     r.child(
       '/',
-      child: (context) => HomeWire(
+      child: (context) => HomePage(
         homeController: Modular.get(),
       ),
     );
