@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 
 import '../../app_module.dart';
 
-class SplashWire extends StatefulWidget {
-  const SplashWire({super.key});
+class SplashPage extends StatefulWidget {
+  const SplashPage({super.key});
 
   @override
-  State<SplashWire> createState() => _SplashWireState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashWireState extends State<SplashWire> {
+class _SplashPageState extends State<SplashPage> {
   @override
   initState() {
     super.initState();
@@ -20,7 +19,6 @@ class _SplashWireState extends State<SplashWire> {
       () => Navigator.pushReplacementNamed(context, AppModule.auth),
     );
   }
-
 
   double easterEgg = 1.0;
 

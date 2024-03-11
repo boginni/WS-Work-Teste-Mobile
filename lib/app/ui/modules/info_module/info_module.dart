@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'info_wire.dart';
+import 'info_page.dart';
 
 class InfoModule extends Module {
   @override

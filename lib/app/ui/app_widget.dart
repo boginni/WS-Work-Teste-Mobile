@@ -1,3 +1,4 @@
+import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -42,9 +43,11 @@ class _AppWidgetState extends State<AppWidget> {
 
     Modular.setInitialRoute(AppModule.splash);
 
+    Modular.setObservers([Asuka.asukaHeroController]);
     return LocaleProvider(
       onLocaleChanged: onLocaleChanged,
       child: MaterialApp.router(
+        builder: Asuka.builder,
         title: 'Ws Work Test Mobile',
         localizationsDelegates: const [
           ...AppLocalizations.localizationsDelegates,

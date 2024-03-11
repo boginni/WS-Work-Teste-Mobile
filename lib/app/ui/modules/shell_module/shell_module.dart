@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/info_module/info_module.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/profile_module/profile_module.dart';
-import 'package:ws_work_test_mobile/app/ui/modules/shell_module/shell_wire.dart';
+import 'package:ws_work_test_mobile/app/ui/modules/shell_module/shell_page.dart';
 
 import '../home_module/home_module.dart';
 

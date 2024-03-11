@@ -3,37 +3,30 @@ import 'package:design_system/molecules/big_vertical_card.dart';
 import 'package:design_system/molecules/vertical_card.dart';
 import 'package:flutter/material.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
+import 'package:ws_work_test_mobile/app/ui/modules/home_module/home_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/category_vertical_card.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/vehicle_big_vertical_card.dart';
 
-import '../../../domain/dto/entities/vehicle/vehicle_entity.dart';
-import '../../../domain/repositories/vehicle_repository.dart';
-
 class HomeWire extends StatefulWidget {
-  const HomeWire({super.key, required this.vehicleRepository});
+  const HomeWire({
+    super.key,
+    required this.homeController,
+  });
 
-  final VehicleRepository vehicleRepository;
+  final HomeController homeController;
 
   @override
   State<HomeWire> createState() => _HomeWireState();
 }
 
 class _HomeWireState extends State<HomeWire> {
-  bool isLoading = true;
-
-  List<VehicleEntity> vehicles = [];
+  HomeController get controller => widget.homeController;
 
   @override
   void initState() {
     super.initState();
-    widget.vehicleRepository.index().then((value) {
-      setState(() {
-        vehicles = value;
-        isLoading = false;
-      });
-    });
+    controller.init();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -106,26 +99,33 @@ class _HomeWireState extends State<HomeWire> {
             ),
           ),
           const SizedBox(height: 16),
-          ListView.builder(
-            shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            physics: const NeverScrollableScrollPhysics(),
-            itemExtent: BigVerticalCard.height + 16,
-            itemCount: isLoading ? 3 : vehicles.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: isLoading
-                    ? BigVerticalCard.skeleton()
-                    : VehicleBigVerticalCard(
-                        vehicle: vehicles[index],
-                        onPressed: () {
+          ListenableBuilder(
+            listenable: controller.store,
+            builder: (context, child) {
+              final store = controller.store;
 
-                        },
-                      ),
+              return ListView.builder(
+                shrinkWrap: true,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                physics: const NeverScrollableScrollPhysics(),
+                itemExtent: BigVerticalCard.height + 16,
+                itemCount: store.vehiclesCount,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: store.loading
+                        ? BigVerticalCard.skeleton()
+                        : VehicleBigVerticalCard(
+                            vehicle: store.vehicles[index],
+                            onPressed: () {
+                              controller.leadVehicle(store.vehicles[index]);
+                            },
+                          ),
+                  );
+                },
               );
             },
-          )
+          ),
         ],
       ),
     );
