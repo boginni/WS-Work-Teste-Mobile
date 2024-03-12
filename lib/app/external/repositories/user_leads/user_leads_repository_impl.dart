@@ -37,6 +37,10 @@ class UserLeadsRepositoryImpl extends UserLeadsRepository {
   Future<void> sync() async {
     final values = await index();
 
+    if(values.isEmpty) {
+      return;
+    }
+
     dio.post(
       '/cars/leads',
       data: values.map((e) => e.toJson()).toList(),

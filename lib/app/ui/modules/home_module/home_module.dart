@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ws_work_test_mobile/app/domain/repositories/vehicle_repository.dart';
 import 'package:ws_work_test_mobile/app/external/repositories/vehicle/mock_vehicle_repository.dart';
+import 'package:ws_work_test_mobile/app/external/repositories/vehicle/vehicle_repository_impl.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/core_module/core_module.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/stores/home_store.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/stores/leads_store.dart';
@@ -17,7 +18,7 @@ class HomeModule extends Module {
   @override
   void binds(Injector i) {
     i.add<VehicleRepository>(
-      MockVehicleRepository.new,
+      VehicleRepositoryImpl.new,
     );
 
     i.add(LeadsStore.new);

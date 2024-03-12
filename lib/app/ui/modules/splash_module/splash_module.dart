@@ -15,10 +15,7 @@ class SplashModule extends Module {
   @override
   void binds(Injector i) {
     i.addLazySingleton(
-      () => SplashController(
-        profileRepository: i.get(),
-        migrationService: i.get(),
-      ),
+      () => SplashController.new,
     );
   }
 

@@ -36,7 +36,11 @@ class CoreModule extends Module {
 
   @override
   void exportedBinds(Injector i) {
-    final dio = Dio();
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://www.wswork.com.br/',
+      ),
+    );
 
     i.addLazySingleton<CheckInternetUseCase>(
       () => CheckInternetUseCaseImpl(
@@ -59,6 +63,8 @@ class CoreModule extends Module {
         checkInternetUseCase: i.get(),
       ),
     );
+
+    i.addInstance(dio);
 
     migrationFactory() => SqliteMigrationConnection(
           database: database!,

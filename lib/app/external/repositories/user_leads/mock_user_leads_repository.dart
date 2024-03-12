@@ -35,7 +35,9 @@ class MockUserLeadsRepository extends UserLeadsRepository {
 
   @override
   Future<void> sync() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(
+      const Duration(seconds: 2),
+    );
     _leads.clear();
   }
 }
