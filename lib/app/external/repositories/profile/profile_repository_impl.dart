@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../domain/dto/entities/user/user_entity.dart';
+import '../../../domain/errors/auth/auth_error.dart';
 import '../../../domain/repositories/profile_repository.dart';
 
 class ProfileRepositoryImpl implements ProfileRepository {
@@ -13,7 +14,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
     final user = auth.currentUser;
 
     if (user == null) {
-      throw Exception('Usuário não encontrado');
+      throw const NotAuthenticatedError();
     }
 
     return UserEntity(
@@ -29,7 +30,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
     final user = auth.currentUser;
 
     if (user == null) {
-      throw Exception('Usuário não encontrado');
+      throw const NotAuthenticatedError();
     }
 
     return user.sendEmailVerification();
@@ -40,7 +41,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
     final user = auth.currentUser;
 
     if (user == null) {
-      throw Exception('Usuário não encontrado');
+      throw const NotAuthenticatedError();
     }
 
     return user.delete();
