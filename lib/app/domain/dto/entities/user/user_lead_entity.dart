@@ -1,9 +1,6 @@
 import 'package:ws_work_test_mobile/app/domain/dto/entities/entity.dart';
 
-import '../vehicle/vehicle_entity.dart';
-
 class UserLeadEntity extends Entity {
-
   final int id;
   final String userId;
   final int vehicleId;
@@ -14,7 +11,7 @@ class UserLeadEntity extends Entity {
   final String vehicleName;
   final num vehiclePrice;
 
-  UserLeadEntity({
+  const UserLeadEntity({
     required this.id,
     required this.userId,
     required this.vehicleId,
@@ -24,7 +21,6 @@ class UserLeadEntity extends Entity {
     required this.syncDate,
     required this.createdAt,
     required this.deletedAt,
-
   });
 
   factory UserLeadEntity.fromJson(Map<String, dynamic> json) {
@@ -32,8 +28,8 @@ class UserLeadEntity extends Entity {
       id: json['id'],
       userId: json['user_id'],
       vehicleId: json['vehicle_id'],
-      syncStatus: json['sync_status'],
-      syncDate: DateTime.parse(json['sync_date']),
+      syncStatus: json['sync_status'] == 1,
+      syncDate: json['deleted_at'] != null ? DateTime.parse(json['sync_date']) : null,
       createdAt: DateTime.parse(json['created_at']),
       deletedAt: json['deleted_at'] != null ? DateTime.parse(json['deleted_at']) : null,
       vehicleName: json['vehicle_name'],
@@ -55,5 +51,4 @@ class UserLeadEntity extends Entity {
       'deleted_at': deletedAt?.toIso8601String(),
     };
   }
-
 }
