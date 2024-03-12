@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-GlobalKey<ScaffoldState>? _singletonKey;
-
 class GlobalScaffoldProvider extends StatelessWidget {
   const GlobalScaffoldProvider({
     super.key,
@@ -11,16 +9,14 @@ class GlobalScaffoldProvider extends StatelessWidget {
   final Widget? child;
 
   static TransitionBuilder builder = (context, widget) {
-    // _singletonKey ;
-
-    // print('GlobalScaffoldProvider.builder: _singletonKey: $_singletonKey');
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      key: _singletonKey,
+      key: scaffoldKey,
       body: widget,
     );
   };
+
+  static GlobalKey<ScaffoldState>? _singletonKey;
 
   static GlobalKey<ScaffoldState> get scaffoldKey => _singletonKey ??= GlobalKey<ScaffoldState>();
 

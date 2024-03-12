@@ -6,7 +6,7 @@ class ConfirmPasswordStore extends ChangeNotifier {
 
   bool _isLoading = true;
 
-  ConfirmPasswordStore({required this.user});
+  ConfirmPasswordStore();
 
   bool get isLoading => _isLoading;
 

@@ -19,6 +19,8 @@ class ProfileRepositoryImpl implements ProfileRepository {
     return UserEntity(
       id: user.uid,
       name: user.displayName ?? '',
+      email: user.email ?? '',
+      isEmailVerified: user.emailVerified,
     );
   }
 
@@ -31,5 +33,21 @@ class ProfileRepositoryImpl implements ProfileRepository {
     }
 
     return user.sendEmailVerification();
+  }
+
+  @override
+  Future<void> deleteAccount() {
+    final user = auth.currentUser;
+
+    if (user == null) {
+      throw Exception('Usuário não encontrado');
+    }
+
+    return user.delete();
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail(String email) {
+    return auth.sendPasswordResetEmail(email: email);
   }
 }

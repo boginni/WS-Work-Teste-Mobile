@@ -1,11 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:ws_work_test_mobile/app/domain/repositories/profile_repository.dart';
 import 'package:ws_work_test_mobile/app/external/repositories/auth/anonymous_auth_repository.dart';
 import 'package:ws_work_test_mobile/app/external/repositories/auth/email_auth_repository.dart';
 import 'package:ws_work_test_mobile/app/external/repositories/auth/google_auth_repository.dart';
 import 'package:ws_work_test_mobile/app/external/repositories/auth/phone_auth_repository.dart';
-import 'package:ws_work_test_mobile/app/external/repositories/profile/profile_repository_impl.dart';
+import 'package:ws_work_test_mobile/app/ui/modules/auth_module/controllers/reset_password_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/controllers/sign_in_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/controllers/sign_up_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/pages/confirm_email_page.dart';
@@ -13,6 +12,7 @@ import 'package:ws_work_test_mobile/app/ui/modules/auth_module/pages/reset_passw
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/pages/sign_in_page.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/pages/sign_up_page.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/stores/confirm_password_store.dart';
+import 'package:ws_work_test_mobile/app/ui/modules/auth_module/stores/reset_password_store.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/stores/sign_in_store.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/stores/sign_up_store.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/core_module/core_module.dart';
@@ -36,10 +36,6 @@ class AuthModule extends Module {
 
   @override
   void exportedBinds(Injector i) {
-    i.addLazySingleton<ProfileRepository>(
-      () => ProfileRepositoryImpl(auth: FirebaseAuth.instance),
-    );
-
     i.add<AuthRepository>(
       () => AnonymousAuthRepository(firebaseAuth: FirebaseAuth.instance),
     );
@@ -57,6 +53,17 @@ class AuthModule extends Module {
 
     i.add(
       ConfirmPasswordStore.new,
+    );
+
+    i.add(
+      ResetPasswordStore.new,
+    );
+
+    i.addLazySingleton(
+      () => ResetPasswordController(
+        profileRepository: i.get(),
+        store: i.get(),
+      ),
     );
 
     i.addLazySingleton(
@@ -117,6 +124,7 @@ class AuthModule extends Module {
       resetPassword,
       child: (context) => ResetPasswordPage(
         openMailService: Modular.get(),
+        controller: Modular.get(),
       ),
     );
 

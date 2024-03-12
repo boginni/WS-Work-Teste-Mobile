@@ -26,9 +26,7 @@ class SplashModule extends Module {
     r.child(
       Modular.initialRoute,
       child: (context) => SplashPage(
-        controller: SplashController(
-          profileRepository: Modular.get(),
-        ),
+        controller: Modular.get(),
       ),
     );
   }

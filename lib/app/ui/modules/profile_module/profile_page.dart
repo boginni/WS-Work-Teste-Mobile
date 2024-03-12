@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ws_work_test_mobile/app/ui/app_module.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/profile_module/profile_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/widgets/dialogs/delete_account_confirm_dialog.dart';
@@ -21,7 +20,7 @@ class _ProfileWireState extends State<ProfileWire> {
   void _onDeleteAccount() {
     DeleteAccountConfirmDialog.show(context).then((value) {
       if (value) {
-        AppModule.restartApp();
+        widget.controller.deleteAccount();
       }
     });
   }
@@ -39,7 +38,15 @@ class _ProfileWireState extends State<ProfileWire> {
     return Scaffold(
       body: Column(
         children: [
-          //delete account list tile
+          //confirm email
+          ListTile(
+            leading: const Icon(Icons.email),
+            title: Text(context.appLocalizations.confirm_email),
+            onTap: () {
+              widget.controller.sendEmailVerification();
+            },
+          ),
+
           ListTile(
             leading: const Icon(Icons.delete),
             title: Text(context.appLocalizations.delete_account),

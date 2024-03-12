@@ -6,14 +6,21 @@ class MockProfileRepository implements ProfileRepository {
 
   @override
   Future<UserEntity> me() async {
-    return const UserEntity(
-      id: '1',
-      name: 'John Doe',
-    );
+    return const UserEntity(id: '1', name: 'John Doe', email: 'test@example.com');
   }
 
   @override
   Future<void> sendEmailVerification() {
+    return Future.value();
+  }
+
+  @override
+  Future<void> deleteAccount() {
+    return Future.value();
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail(String email) {
     return Future.value();
   }
 }

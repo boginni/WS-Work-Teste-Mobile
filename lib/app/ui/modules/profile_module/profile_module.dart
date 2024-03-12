@@ -9,7 +9,6 @@ class ProfileModule extends Module {
   @override
   List<Module> get imports => [
         CoreModule(),
-        AuthModule(),
       ];
 
   @override

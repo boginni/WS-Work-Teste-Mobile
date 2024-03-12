@@ -40,35 +40,40 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
             context.appLocalizations.confirm_email,
             style: context.textTheme.titleLarge,
           ),
-          Visibility(
-            visible: widget.controller.store.isLoading,
-            replacement: Builder(
-              builder: (context) {
-                return RichText(
-                  text: TextSpan(
-                    text: context.appLocalizations.we_have_sent_an_email_to,
-                    style: context.textTheme.bodyMedium,
-                    children: [
-                      TextSpan(
-                        text: ' ${widget.controller.store.user?.email} ',
-                        style: context.textTheme.bodyMedium?.copyWith(
-                          color: context.colorScheme.primary,
-                        ),
+          ListenableBuilder(
+            listenable: widget.controller.store,
+            builder: (context, child) {
+              return Visibility(
+                visible: widget.controller.store.isLoading,
+                replacement: Builder(
+                  builder: (context) {
+                    return RichText(
+                      text: TextSpan(
+                        text: context.appLocalizations.we_have_sent_an_email_to,
+                        style: context.textTheme.bodyMedium,
+                        children: [
+                          TextSpan(
+                            text: ' ${widget.controller.store.user?.email} ',
+                            style: context.textTheme.bodyMedium?.copyWith(
+                              color: context.colorScheme.primary,
+                            ),
+                          ),
+                          TextSpan(
+                            text: context.appLocalizations.check_your_email_and_open_the_link_to_confirm_your_email,
+                          ),
+                        ],
                       ),
-                      TextSpan(
-                        text: context.appLocalizations.check_your_email_and_open_the_link_to_confirm_your_email,
-                      ),
-                    ],
+                    );
+                  },
+                ),
+                child: const SkeletonLine(
+                  style: SkeletonLineStyle(
+                    height: 24,
+                    width: 200,
                   ),
-                );
-              },
-            ),
-            child: const SkeletonLine(
-              style: SkeletonLineStyle(
-                height: 24,
-                width: 200,
-              ),
-            ),
+                ),
+              );
+            },
           ),
           const SizedBox(
             height: 16,
