@@ -46,7 +46,7 @@ class _ShellWireState extends State<ShellWire> {
       child: Scaffold(
         extendBody: true,
         appBar: AppBar(
-          title: Text('Ws Work Test Mobile'),
+          title: const Text('Ws Work Test Mobile'),
           actions: [
             IconButton(
               onPressed: () {
@@ -69,10 +69,10 @@ class _ShellWireState extends State<ShellWire> {
               icon: Icon(Icons.home),
               label: 'Home',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.info),
-              label: 'Info',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.info),
+            //   label: 'Info',
+            // ),
           ],
         ),
       ),

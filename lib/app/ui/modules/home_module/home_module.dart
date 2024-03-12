@@ -26,8 +26,6 @@ class HomeModule extends Module {
 
     i.add(HomeStore.new);
 
-    i.add<UserLeadsRepository>(MockUserLeadsRepository.new);
-
     i.add(HomeController.new);
   }
 

@@ -5,15 +5,17 @@ abstract class Migration {
 
   final MigrationConnection connection;
 
+  String get migrationName => runtimeType.toString();
+
   Future<void> up();
 
   Future<void> down();
 
   Future<bool> hasMigrationBeenRun() {
-    return connection.hasMigrationBeenRun(runtimeType.toString());
+    return connection.hasMigrationBeenRun(migrationName);
   }
 
   Future<void> markMigrationAsRun() {
-    return connection.markMigrationAsRun(runtimeType.toString());
+    return connection.markMigrationAsRun(migrationName);
   }
 }

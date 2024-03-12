@@ -17,6 +17,7 @@ class SplashModule extends Module {
     i.addLazySingleton(
       () => SplashController(
         profileRepository: i.get(),
+        migrationService: i.get(),
       ),
     );
   }

@@ -21,23 +21,29 @@ class SqliteDatabaseMigrationService implements MigrationService {
     ];
   }
 
+  /// Not implemented due to time constraints
   @override
   Future<void> down() async {
-    for (final migration in getMigrations()) {
-      if (await migration.hasMigrationBeenRun()) {
-        continue;
-      }
-
-      print('Running ${migration.runtimeType}');
-      await migration.down();
-      await migration.markMigrationAsRun();
-      print('Finished ${migration.runtimeType}');
-    }
+    // for (final migration in getMigrations()) {
+    //   if (await migration.hasMigrationBeenRun()) {
+    //     continue;
+    //   }
+    //
+    //   print('Running ${migration.runtimeType}');
+    //   await migration.down();
+    //   await migration.markMigrationAsRun();
+    //   print('Finished ${migration.runtimeType}');
+    // }
   }
 
   @override
   Future<void> up() async {
+    print('Running migrations...');
+
     for (final migration in getMigrations()) {
+
+
+
       if (await migration.hasMigrationBeenRun()) {
         continue;
       }

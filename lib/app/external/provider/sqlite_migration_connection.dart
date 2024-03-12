@@ -1,10 +1,17 @@
+import 'dart:async';
+
 import 'package:sqflite/sqflite.dart';
 import 'package:ws_work_test_mobile/app/domain/providers/migration_connection.dart';
 
 class SqliteMigrationConnection implements MigrationConnection {
   final Database database;
 
-  SqliteMigrationConnection({required this.database});
+  final completer = Completer<void>();
+
+  SqliteMigrationConnection({
+    required this.database,
+  });
+
 
   @override
   Future<void> execute(String sql) {

@@ -4,6 +4,9 @@ import '../dto/entities/vehicle/vehicle_entity.dart';
 import '../dto/params/user_lead_param.dart';
 
 abstract class UserLeadsRepository {
+
+  const UserLeadsRepository();
+
   Future<List<UserLeadEntity>> index();
 
   Future<void> store(UserLeadParam param);
