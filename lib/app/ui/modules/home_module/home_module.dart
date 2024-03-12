@@ -1,12 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:ws_work_test_mobile/app/domain/repositories/user_leads_repository.dart';
 import 'package:ws_work_test_mobile/app/domain/repositories/vehicle_repository.dart';
 import 'package:ws_work_test_mobile/app/external/repositories/vehicle/mock_vehicle_repository.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/core_module/core_module.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/stores/home_store.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/stores/leads_store.dart';
 
-import '../../../external/repositories/user_leads/mock_user_leads_repository.dart';
 import 'controllers/home_controller.dart';
 import 'pages/home_page.dart';
 

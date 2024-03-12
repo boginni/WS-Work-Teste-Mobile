@@ -36,13 +36,18 @@ class UserLeadsRepositoryImpl extends UserLeadsRepository {
   @override
   Future<void> sync() async {
     final values = await index();
-    for (final value in values) {
-      await database.update(
-        table,
-        value.toJson(),
-        where: 'id = ?',
-        whereArgs: [value.id],
-      );
-    }
+
+    dio.post(
+      '/cars/leads',
+      data: values.map((e) => e.toJson()).toList(),
+    );
+
+    await database.update(
+      table,
+      {
+        'sync_date': DateTime.now().toIso8601String(),
+      },
+      where: 'sync_date IS NULL',
+    );
   }
 }

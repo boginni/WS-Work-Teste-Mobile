@@ -86,6 +86,8 @@ class HomeController {
       );
 
       await leadsRepository.store(param);
+
+      await getLeads();
     } on Failure catch (e) {
       dialogService.alertSnackBar(
         (context) => failureMessageExtractionService.getErrorMessage(e),

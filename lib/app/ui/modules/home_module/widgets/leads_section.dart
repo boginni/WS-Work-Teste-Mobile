@@ -12,17 +12,17 @@ import 'leads_vertical_card.dart';
 class LeadsSection extends ListenableWidget {
   const LeadsSection({
     super.key,
-    required this.homeController,
+    required this.controller,
   });
 
-  final HomeController homeController;
+  final HomeController controller;
 
   @override
-  Listenable get listenable => homeController.leadsStore;
+  Listenable get listenable => controller.leadsStore;
 
   @override
   Widget build(BuildContext context) {
-    final store = homeController.leadsStore;
+    final store = controller.leadsStore;
 
     // store.loading = true;
     // store.loading = false;
@@ -37,15 +37,15 @@ class LeadsSection extends ListenableWidget {
               style: context.textTheme.titleMedium,
             ),
             trailing: store.hasLeads
-                ? CupertinoButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () {},
-                    child: Text(
-                      context.appLocalizations.sync,
-                      // style: context.textTheme.bodyMedium.copyWith(
-                      //   color: context.colorScheme.primary,
-                      // ),
+                ? FilledButton.icon(
+                    style: FilledButton.styleFrom(
+                      visualDensity: VisualDensity.compact,
                     ),
+                    onPressed: () {
+                      controller.syncLeads();
+                    },
+                    icon: const Icon(Icons.sync),
+                    label: Text(context.appLocalizations.sync),
                   )
                 : null,
           ),
