@@ -8,10 +8,10 @@ import 'package:ws_work_test_mobile/app/ui/app_widget.dart';
 
 import 'firebase_options.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.android,
   );
 
