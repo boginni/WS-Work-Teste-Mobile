@@ -3,13 +3,6 @@ import 'package:ws_work_test_mobile/app/domain/dto/entities/entity.dart';
 import '../vehicle/vehicle_entity.dart';
 
 class UserLeadEntity extends Entity {
-//           id INTEGER PRIMARY KEY AUTOINCREMENT,
-//         user_id INTEGER NOT NULL,
-//         vehicle_id INTEGER NOT NULL,
-//         sync_status BOOLEAN NOT NULL DEFAULT 0,
-//         sync_date TEXT,
-//         created_at TEXT NOT NULL,
-//         deleted_at TEXT
 
   final int id;
   final int userId;
@@ -18,7 +11,6 @@ class UserLeadEntity extends Entity {
   final DateTime? syncDate;
   final DateTime createdAt;
   final DateTime? deletedAt;
-
   final String vehicleName;
   final num vehiclePrice;
 
@@ -41,9 +33,6 @@ class UserLeadEntity extends Entity {
       userId: json['user_id'],
       vehicleId: json['vehicle_id'],
       syncStatus: json['sync_status'],
-      // syncDate: json['sync_date'],
-      // createdAt: json['created_at'],
-      // deletedAt: json['deleted_at'],
       syncDate: DateTime.parse(json['sync_date']),
       createdAt: DateTime.parse(json['created_at']),
       deletedAt: json['deleted_at'] != null ? DateTime.parse(json['deleted_at']) : null,

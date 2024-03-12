@@ -15,9 +15,14 @@ class CreateLeadsTable extends Migration {
     return connection.execute('''
       CREATE TABLE IF NOT EXISTS user_leads (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        sync_status BOOLEAN NOT NULL DEFAULT 0,
         user_id INTEGER NOT NULL,
         vehicle_id INTEGER NOT NULL,
+        sync_status BOOLEAN NOT NULL DEFAULT 0,
+        vehicle_name TEXT NOT NULL,
+        vehicle_price NUMERIC NOT NULL,
+        sync_date TEXT,
+        created_at TEXT NOT NULL,
+        deleted_at TEXT
       );
     ''');
   }

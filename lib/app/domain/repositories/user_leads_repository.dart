@@ -1,9 +1,14 @@
+import 'package:ws_work_test_mobile/app/domain/dto/entities/user/user_lead_entity.dart';
+
 import '../dto/entities/vehicle/vehicle_entity.dart';
+import '../dto/params/user_lead_param.dart';
 
 abstract class UserLeadsRepository {
-  Future<List<VehicleEntity>> index();
+  Future<List<UserLeadEntity>> index();
 
-  Future<void> store(VehicleEntity vehicleEntity);
+  Future<void> store(UserLeadParam param);
 
   Future<void> delete(int id);
+
+  Future<void> sync();
 }
