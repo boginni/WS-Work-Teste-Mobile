@@ -96,7 +96,10 @@ class _ConfirmEmailPageState extends State<ConfirmEmailPage> {
                   onPressed: () {
                     widget.openMailService.openMailApp(context);
                   },
-                  child: Text(context.appLocalizations.open_mail_app),
+                  child: Text(
+                    context.appLocalizations.open_mail_app,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ],

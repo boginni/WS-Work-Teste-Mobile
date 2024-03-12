@@ -48,6 +48,7 @@ class SignInPage extends ListenableWidget {
             children: [
               FilledButton(
                 onPressed: () {
+                  FocusManager.instance.primaryFocus?.unfocus();
                   controller.signIn();
                 },
                 child: Text(context.appLocalizations.sign_in),
