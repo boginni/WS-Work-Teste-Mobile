@@ -1,20 +1,20 @@
 import 'package:design_system/molecules/vertical_card.dart';
 import 'package:flutter/material.dart';
+import 'package:ws_work_test_mobile/app/domain/dto/entities/user/user_lead_entity.dart';
 
-class CategoryVerticalCard extends StatelessWidget {
-  const CategoryVerticalCard({
+class LeadsVerticalCard extends StatelessWidget {
+  const LeadsVerticalCard({
     super.key,
     required this.index,
-    required this.skeleton,
+    this.userLeadEntity,
   });
 
   final int index;
-  final bool skeleton;
+  final UserLeadEntity? userLeadEntity;
 
   @override
   Widget build(BuildContext context) {
     return VerticalCard(
-      skeleton: skeleton,
       imageBackgroundColor: Colors.red,
       imageProvider: const NetworkImage('https://via.placeholder.com/160x160'),
       child: Column(

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../../domain/dto/entities/vehicle/vehicle_entity.dart';
+import '../../../../domain/dto/entities/vehicle/vehicle_entity.dart';
 
 class HomeStore extends ChangeNotifier {
   var _loading = true;

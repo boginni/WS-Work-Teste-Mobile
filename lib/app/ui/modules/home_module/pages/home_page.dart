@@ -1,10 +1,9 @@
 import 'package:design_system/atoms/section_divider.dart';
 import 'package:design_system/molecules/big_vertical_card.dart';
-import 'package:design_system/molecules/vertical_card.dart';
 import 'package:flutter/material.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
-import 'package:ws_work_test_mobile/app/ui/modules/home_module/home_controller.dart';
-import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/category_vertical_card.dart';
+import 'package:ws_work_test_mobile/app/ui/modules/home_module/controllers/home_controller.dart';
+import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/leads_section.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/vehicle_big_vertical_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,15 +41,17 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 Text(
-                  'Welcome back!',
+                  context.appLocalizations.welcome_back,
                   style: context.textTheme.titleLarge,
                 ),
                 // say to enjoy the app in a fancy way
-                const Text('Enjoy the app in a fancy way!'),
+                Text(
+                  context.appLocalizations.enjoy_the_app_in_a_fancy_way,
+                ),
                 const SizedBox(height: 16),
                 TextField(
                   decoration: InputDecoration(
-                    hintText: 'Search',
+                    hintText: context.appLocalizations.search,
                     prefixIcon: const Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(32),
@@ -61,39 +62,18 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 16),
-                SectionDivider(
-                  leading: Text(
-                    'Categories',
-                    style: context.textTheme.titleMedium,
-                  ),
-                ),
               ],
             ),
           ),
-          SizedBox(
-            height: VerticalCard.size.height,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemExtent: VerticalCard.size.width + 16,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 16),
-                  child: CategoryVerticalCard(
-                    index: index,
-                    skeleton: true,
-                  ),
-                );
-              },
-            ),
+          LeadsSection(
+            homeController: controller,
           ),
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: SectionDivider(
               leading: Text(
-                'Featured',
+                context.appLocalizations.featured,
                 style: context.textTheme.titleMedium,
               ),
             ),

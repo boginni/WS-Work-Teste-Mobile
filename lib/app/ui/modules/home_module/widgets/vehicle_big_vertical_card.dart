@@ -101,7 +101,7 @@ class VehicleBigVerticalCard extends StatelessWidget {
                     children: [
                       FilledButton(
                         onPressed: onPressed,
-                        child: Text(context.appLocalizations.i_want),
+                        child: Text(context.appLocalizations.i_wish),
                       ),
                     ],
                   ),
