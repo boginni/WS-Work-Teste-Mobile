@@ -1,5 +1,7 @@
 import 'package:design_system/design_system.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/controllers/home_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/leads_section.dart';
@@ -53,6 +55,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 16),
                   TextField(
+                    controller: controller.store.searchController,
                     decoration: InputDecoration(
                       hintText: context.appLocalizations.search,
                       prefixIcon: const Icon(Icons.search),
@@ -68,10 +71,24 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            LeadsSection(
-              controller: controller,
+            ListenableBuilder(
+              listenable: controller.store.searchController,
+              builder: (BuildContext context, Widget? child) {
+                if (controller.store.isSearching) {
+                  return const SizedBox();
+                }
+
+                return child!;
+              },
+              child: Column(
+                children: [
+                  LeadsSection(
+                    controller: controller,
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
             ),
-            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: SectionDivider(
@@ -83,7 +100,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 16),
             ListenableBuilder(
-              listenable: controller.store,
+              listenable: Listenable.merge([controller.store, controller.store.searchController]),
               builder: (context, child) {
                 final store = controller.store;
 

@@ -110,28 +110,28 @@ class SignInPage extends ListenableWidget {
               const SizedBox(
                 height: 16,
               ),
-              SegmentedButton(
-                segments: [
-                  ButtonSegment(
-                    value: 0,
-                    label: Text(context.appLocalizations.email),
-                  ),
-                  ButtonSegment(
-                    value: 1,
-                    label: Text(context.appLocalizations.phone),
-                  ),
-                ],
-                multiSelectionEnabled: false,
-                emptySelectionAllowed: false,
-                onSelectionChanged: (selected) {
-                  /// Disabled because of time constraints
-                  // store.selectedSegmentedButtonSet = selected;
-                },
-                selected: store.selectedSegmentedButtonSet,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
+              // SegmentedButton(
+              //   segments: [
+              //     ButtonSegment(
+              //       value: 0,
+              //       label: Text(context.appLocalizations.email),
+              //     ),
+              //     ButtonSegment(
+              //       value: 1,
+              //       label: Text(context.appLocalizations.phone),
+              //     ),
+              //   ],
+              //   multiSelectionEnabled: false,
+              //   emptySelectionAllowed: false,
+              //   onSelectionChanged: (selected) {
+              //     /// Disabled because of time constraints
+              //     // store.selectedSegmentedButtonSet = selected;
+              //   },
+              //   selected: store.selectedSegmentedButtonSet,
+              // ),
+              // const SizedBox(
+              //   height: 16,
+              // ),
               Visibility(
                 visible: store.isEmailSelected,
                 replacement: PhoneSignInForm(

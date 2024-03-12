@@ -7,9 +7,24 @@ class HomeStore extends ChangeNotifier {
 
   List<VehicleEntity> _vehicles = [];
 
+  final searchController = TextEditingController();
+
+  HomeStore();
+
   bool get loading => _loading;
 
-  List<VehicleEntity> get vehicles => _vehicles;
+  bool get isSearching => searchController.text.isNotEmpty;
+
+  List<VehicleEntity> get vehicles {
+    if (searchController.text.isEmpty) {
+      return _vehicles;
+    }
+
+    return _vehicles.where((element) {
+      final search = searchController.text.toLowerCase();
+      return element.nomeModelo.toLowerCase().contains(search);
+    }).toList();
+  }
 
   int get vehiclesCount => loading ? 3 : vehicles.length;
 
