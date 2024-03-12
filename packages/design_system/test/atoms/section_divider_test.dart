@@ -3,20 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('SmallChip renders label correctly', (WidgetTester tester) async {
+  testWidgets('Section Divider renders Leading and trailing', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
-        home: SmallChip(
-          label: const Text('Test Label'),
-          backgroundColor: Colors.blue,
+        home: Material(
+          child: SectionDivider(
+            leading: Text('Leading'),
+            trailing: Text('Trailing'),
+          ),
         ),
       ),
     );
 
-    // Use a Finder to locate the Text widget with your label
-    final textFinder = find.text('Test Label');
+    final leadingFinder = find.text('Leading');
+    expect(leadingFinder, findsOneWidget);
 
-    // Assert that it exists
-    expect(textFinder, findsOneWidget);
+    final trailingFinder = find.text('Trailing');
+    expect(trailingFinder, findsOneWidget);
   });
 }
