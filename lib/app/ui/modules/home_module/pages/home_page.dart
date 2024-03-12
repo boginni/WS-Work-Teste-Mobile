@@ -1,5 +1,4 @@
-import 'package:design_system/atoms/section_divider.dart';
-import 'package:design_system/molecules/big_vertical_card.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/controllers/home_controller.dart';

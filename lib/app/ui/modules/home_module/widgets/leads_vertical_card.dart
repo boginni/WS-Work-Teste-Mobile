@@ -1,4 +1,4 @@
-import 'package:design_system/molecules/vertical_card.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:ws_work_test_mobile/app/domain/dto/entities/user/user_lead_entity.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';

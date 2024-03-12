@@ -40,7 +40,7 @@ class BigVerticalCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: Visibility(
           visible: !skeleton,
-          replacement: SkeletonVerticalCard(),
+          replacement: SkeletonBigVerticalCard(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -63,8 +63,8 @@ class BigVerticalCard extends StatelessWidget {
   }
 }
 
-class SkeletonVerticalCard extends StatelessWidget {
-  const SkeletonVerticalCard({super.key});
+class SkeletonBigVerticalCard extends StatelessWidget {
+  const SkeletonBigVerticalCard({super.key});
 
   @override
   Widget build(BuildContext context) {
