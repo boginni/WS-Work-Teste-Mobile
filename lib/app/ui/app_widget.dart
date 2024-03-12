@@ -33,10 +33,13 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     const supportedLocales = [
       ...AppLocalizations.supportedLocales,
-      Locale('pt', 'BR'),
-      Locale('en', 'US'),
-      Locale('fr', 'FR'),
-      Locale('en', ''),
+      // Locale('pt', 'BR'),
+      // Locale('en', 'US'),
+      // Locale('fr', 'FR'),
+      // Locale('de', 'DE'),
+      // Locale('es', 'ES'),
+      // Locale('ja', 'JP'),
+      // Locale('en', ''),
     ];
 
     final theme = WsWorkTestMobileTheme();

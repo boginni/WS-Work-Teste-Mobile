@@ -66,7 +66,7 @@ class ThemeFactory {
         dense: true,
         minVerticalPadding: 0,
         contentPadding: EdgeInsets.symmetric(
-          vertical: 16,
+          vertical: 8,
           horizontal: 16,
         ),
       ),

@@ -24,34 +24,48 @@ class LanguageModal extends StatelessWidget {
       children: [
         ListTile(
           leading: const Icon(Icons.language),
-          title: Text('Português'),
+          title: const Text('Português'),
           onTap: () {
             onLocaleChanged(const Locale('pt', 'BR'));
-            // LocaleProvider.of(context).onLocaleChanged(const Locale('pt', 'BR'));
-            // context.setLocale(const Locale('pt', 'BR'));
-            // Navigator.pop(context);
           },
         ),
         ListTile(
           leading: const Icon(Icons.language),
-          title: Text('English'),
+          title: const Text('English'),
           onTap: () {
             onLocaleChanged(const Locale('en', 'US'));
-            // LocaleProvider.of(context).onLocaleChanged(const Locale('en', 'US'));
-            // context.setLocale(const Locale('en', 'US'));
-            // Navigator.pop(context);
           },
         ),
         ListTile(
           leading: const Icon(Icons.language),
-          title: Text('Français'),
+          title: const Text('Français'),
           onTap: () {
             onLocaleChanged(const Locale('fr', 'FR'));
-            // LocaleProvider.of(context).onLocaleChanged(const Locale('fr', 'FR'));
-            // context.setLocale(const Locale('fr', 'FR'));
-            // Navigator.pop(context);
           },
         ),
+        ListTile(
+          leading: const Icon(Icons.language),
+          title: const Text('Deutsch'),
+          onTap: () {
+            onLocaleChanged(const Locale('de', 'DE'));
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.language),
+          title: const Text('Español'),
+          onTap: () {
+            onLocaleChanged(const Locale('es', 'ES'));
+          },
+        ),
+        // Japanese
+        ListTile(
+          leading: const Icon(Icons.language),
+          title: const Text('日本語'),
+          onTap: () {
+            onLocaleChanged(const Locale('ja', 'JP'));
+          },
+        ),
+
       ],
     );
   }

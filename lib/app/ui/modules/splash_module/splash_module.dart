@@ -15,7 +15,7 @@ class SplashModule extends Module {
   @override
   void binds(Injector i) {
     i.addLazySingleton(
-      () => SplashController.new,
+      SplashController.new,
     );
   }
 
