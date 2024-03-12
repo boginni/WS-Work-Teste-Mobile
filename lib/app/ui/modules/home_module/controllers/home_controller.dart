@@ -40,22 +40,35 @@ class HomeController {
       _currentUser = null;
     }
 
+    Future.wait([
+      getVehicles(),
+      getLeads(),
+    ]);
+  }
+
+  Future<void> getLeads() async {
     try {
-      final vehicles = await vehicleRepository.index();
-      store.vehicles = vehicles;
-      store.loading = false;
+      leadsStore.loading = true;
+      leadsStore.leads = await leadsRepository.index();
+    } on Failure catch (e) {
+      dialogService.alertSnackBar(
+        (context) => failureMessageExtractionService.getErrorMessage(e),
+      );
     } finally {
-      store.loading = false;
+      leadsStore.loading = false;
     }
   }
 
   Future<void> getVehicles() async {
     try {
+      store.loading = true;
       store.vehicles = await vehicleRepository.index();
     } on Failure catch (e) {
       dialogService.alertSnackBar(
         (context) => failureMessageExtractionService.getErrorMessage(e),
       );
+    } finally {
+      store.loading = false;
     }
   }
 
@@ -73,17 +86,6 @@ class HomeController {
       );
 
       await leadsRepository.store(param);
-    } on Failure catch (e) {
-      dialogService.alertSnackBar(
-        (context) => failureMessageExtractionService.getErrorMessage(e),
-      );
-    }
-  }
-
-  Future<void> getLeads() async {
-    try {
-      leadsStore.leads = await leadsRepository.index();
-      leadsStore.loading = false;
     } on Failure catch (e) {
       dialogService.alertSnackBar(
         (context) => failureMessageExtractionService.getErrorMessage(e),
