@@ -45,3 +45,10 @@ class CredentialAlreadyInUseError extends AuthError {
   @override
   String? get message => '';
 }
+
+class NotAuthenticatedError extends AuthError {
+  const NotAuthenticatedError();
+
+  @override
+  String? get message => '';
+}

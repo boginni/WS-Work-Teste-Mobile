@@ -5,7 +5,7 @@ import '../vehicle/vehicle_entity.dart';
 class UserLeadEntity extends Entity {
 
   final int id;
-  final int userId;
+  final String userId;
   final int vehicleId;
   final bool syncStatus;
   final DateTime? syncDate;

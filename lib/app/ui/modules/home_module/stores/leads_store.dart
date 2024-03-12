@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ws_work_test_mobile/app/domain/dto/entities/user/user_lead_entity.dart';
 
-import '../../../../domain/dto/entities/vehicle/vehicle_entity.dart';
-
 class LeadsStore extends ChangeNotifier {
-  var _loading = true;
+  bool _loading = true;
+
+  bool _syncing = false;
 
   List<UserLeadEntity> _leads = [];
+
+  LeadsStore();
+
+  bool get syncing => _syncing;
 
   bool get loading => _loading;
 
@@ -15,6 +19,11 @@ class LeadsStore extends ChangeNotifier {
   int? get leadsCount => loading ? null : leads.length;
 
   bool get hasLeads => !loading && leads.isNotEmpty;
+
+  set syncing(bool value) {
+    _syncing = value;
+    notifyListeners();
+  }
 
   set loading(bool value) {
     _loading = value;

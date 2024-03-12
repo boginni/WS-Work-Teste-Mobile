@@ -2,7 +2,7 @@ import 'package:ws_work_test_mobile/app/domain/dto/entities/entity.dart';
 import 'package:ws_work_test_mobile/app/domain/dto/entities/vehicle/vehicle_entity.dart';
 
 class UserLeadParam extends Entity {
-  final int userId;
+  final String userId;
   final int vehicleId;
   final DateTime createdAt;
   final VehicleEntity vehicle;
