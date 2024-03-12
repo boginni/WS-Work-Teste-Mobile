@@ -123,7 +123,8 @@ class SignInPage extends ListenableWidget {
                 multiSelectionEnabled: false,
                 emptySelectionAllowed: false,
                 onSelectionChanged: (selected) {
-                  store.selectedSegmentedButtonSet = selected;
+                  /// Disabled because of time constraints
+                  // store.selectedSegmentedButtonSet = selected;
                 },
                 selected: store.selectedSegmentedButtonSet,
               ),
