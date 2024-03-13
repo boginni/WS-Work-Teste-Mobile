@@ -11,9 +11,13 @@ class ResetPasswordController {
   });
 
   void sendResetPasswordEmail() async {
-    store.isLoading = true;
-    await profileRepository.sendPasswordResetEmail(store.emailController.text);
-    await Future.delayed(const Duration(seconds: 2));
-    store.isLoading = false;
+    try {
+      store.isLoading = true;
+      await profileRepository.sendPasswordResetEmail(store.emailController.text);
+      await Future.delayed(const Duration(seconds: 2));
+      store.emailSent = true;
+    } finally {
+      store.isLoading = false;
+    }
   }
 }

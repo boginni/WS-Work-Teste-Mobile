@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:validatorless/validatorless.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/controllers/reset_password_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/services/open_mail_service.dart';
@@ -38,11 +41,21 @@ class ResetPasswordPage extends ListenableWidget {
           const SizedBox(
             height: 16,
           ),
-          TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.email),
-              labelText: context.appLocalizations.email,
-              hintText: '',
+          AutofillGroup(
+            child: TextFormField(
+              controller: controller.store.emailController,
+              validator: Validatorless.multiple([
+                Validatorless.required(context.appLocalizations.required_field),
+                Validatorless.email(context.appLocalizations.invalid_email),
+              ]),
+              autofillHints: const [AutofillHints.email, AutofillHints.username],
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.email),
+                labelText: context.appLocalizations.email,
+                hintText: '',
+              ),
             ),
           ),
           const SizedBox(
@@ -78,21 +91,24 @@ class ResetPasswordPage extends ListenableWidget {
               ),
             ],
           ),
-          RichText(
-            text: TextSpan(
-              text: context.appLocalizations.we_have_sent_an_email_to,
-              style: context.textTheme.labelSmall,
-              children: [
-                TextSpan(
-                  text: ' email ',
-                  style: context.textTheme.labelSmall?.copyWith(
-                    color: context.colorScheme.primary,
+          Visibility(
+            visible: controller.store.emailSent,
+            child: RichText(
+              text: TextSpan(
+                text: context.appLocalizations.we_have_sent_an_email_to,
+                style: context.textTheme.labelSmall,
+                children: [
+                  TextSpan(
+                    text: ' ${controller.store.emailController} ',
+                    style: context.textTheme.labelSmall?.copyWith(
+                      color: context.colorScheme.primary,
+                    ),
                   ),
-                ),
-                TextSpan(
-                  text: context.appLocalizations.check_your_email_and_open_the_link_to_reset_your_password,
-                ),
-              ],
+                  TextSpan(
+                    text: context.appLocalizations.check_your_email_and_open_the_link_to_reset_your_password,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
