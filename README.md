@@ -27,6 +27,7 @@ As principais decições estão descritas em cada arquivo README.md, dentro das 
 * **Idiomas**: Suporte para Português, Inglês, Espanhol, Francês, Alemão e Japonês.
 * **Tema**: Suporte a Tema Escuro e Claro.
 * **Testes**: Testes Unitários e Testes de Widgets.
+* **Crashlytics**
 
 ## Como executar
 
