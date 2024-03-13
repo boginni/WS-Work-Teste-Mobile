@@ -12,7 +12,7 @@ class SplashController {
   final UserLeadsRepository userLeadsRepository;
   final MigrationService migrationService;
 
-  const SplashController( {
+  const SplashController({
     required this.userLeadsRepository,
     required this.profileRepository,
     required this.migrationService,

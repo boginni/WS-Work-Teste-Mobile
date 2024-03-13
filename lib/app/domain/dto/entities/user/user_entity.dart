@@ -11,7 +11,6 @@ class UserEntity implements Entity {
     required this.name,
     this.email,
     this.isEmailVerified = false,
-
   });
 
   @override

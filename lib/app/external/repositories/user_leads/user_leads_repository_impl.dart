@@ -37,7 +37,7 @@ class UserLeadsRepositoryImpl extends UserLeadsRepository {
   Future<void> sync() async {
     final values = await index();
 
-    if(values.isEmpty) {
+    if (values.isEmpty) {
       return;
     }
 

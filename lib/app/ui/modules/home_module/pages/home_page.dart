@@ -1,7 +1,5 @@
 import 'package:design_system/design_system.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/controllers/home_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/home_module/widgets/leads_section.dart';

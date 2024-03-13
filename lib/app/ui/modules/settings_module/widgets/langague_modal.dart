@@ -65,7 +65,6 @@ class LanguageModal extends StatelessWidget {
             onLocaleChanged(const Locale('ja', 'JP'));
           },
         ),
-
       ],
     );
   }

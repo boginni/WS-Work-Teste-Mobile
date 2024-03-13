@@ -95,7 +95,6 @@ class ResetPasswordPage extends ListenableWidget {
               ],
             ),
           ),
-
         ],
       ),
     );

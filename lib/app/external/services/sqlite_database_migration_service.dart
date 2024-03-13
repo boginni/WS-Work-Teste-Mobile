@@ -41,9 +41,6 @@ class SqliteDatabaseMigrationService implements MigrationService {
     print('Running migrations...');
 
     for (final migration in getMigrations()) {
-
-
-
       if (await migration.hasMigrationBeenRun()) {
         continue;
       }

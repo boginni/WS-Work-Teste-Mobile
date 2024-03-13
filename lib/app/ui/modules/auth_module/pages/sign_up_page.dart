@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:validatorless/validatorless.dart';
 import 'package:ws_work_test_mobile/app/ui/extensions/context_extensions.dart';
-import 'package:ws_work_test_mobile/app/ui/modules/auth_module/controllers/sign_in_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/modules/auth_module/controllers/sign_up_controller.dart';
 import 'package:ws_work_test_mobile/app/ui/widgets/listenable_widget.dart';
-
-import '../../../app_module.dart';
-import '../auth_module.dart';
 
 class SignUpPage extends ListenableWidget {
   const SignUpPage({

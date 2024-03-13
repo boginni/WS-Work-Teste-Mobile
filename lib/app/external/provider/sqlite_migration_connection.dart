@@ -12,7 +12,6 @@ class SqliteMigrationConnection implements MigrationConnection {
     required this.database,
   });
 
-
   @override
   Future<void> execute(String sql) {
     return database.execute(sql);
