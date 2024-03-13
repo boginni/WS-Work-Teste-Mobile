@@ -1,5 +1,8 @@
 # WS-Work-Teste-Mobile
 
+[![wakatime](https://wakatime.com/badge/user/f7c42b6d-9b25-4460-97f3-51e68f190b6b/project/018e1981-50c5-4d92-815f-a9c9815b96ea.svg)](https://wakatime.com/@f7c42b6d-9b25-4460-97f3-51e68f190b6b/projects/mqgowxmxss?start=2024-03-07&end=2024-03-13)
+
+
 O teste para a vaga de desenvolvedor mobile da WS Work. o aplicativo foi desenvolvido em flutter, e
 segue a arquitetura de clean code, respeitando todos os princípios de SOLID.
 
@@ -27,6 +30,7 @@ As principais decições estão descritas em cada arquivo README.md, dentro das 
 * **Idiomas**: Suporte para Português, Inglês, Espanhol, Francês, Alemão e Japonês.
 * **Tema**: Suporte a Tema Escuro e Claro.
 * **Testes**: Testes Unitários e Testes de Widgets.
+* **Crashlytics**
 
 ## Como executar
 
