@@ -99,7 +99,7 @@ class ResetPasswordPage extends ListenableWidget {
                 style: context.textTheme.labelSmall,
                 children: [
                   TextSpan(
-                    text: ' ${controller.store.emailController} ',
+                    text: ' ${controller.store.emailController.text} ',
                     style: context.textTheme.labelSmall?.copyWith(
                       color: context.colorScheme.primary,
                     ),
