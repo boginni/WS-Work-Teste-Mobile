@@ -60,7 +60,7 @@ class _AppWidgetState extends State<AppWidget> {
         locale: local,
         supportedLocales: supportedLocales,
         theme: theme.getLightThemeData(context),
-        // darkTheme: theme.getDarkThemeData(context),
+        darkTheme: theme.getDarkThemeData(context),
         routerConfig: Modular.routerConfig,
       ),
     );

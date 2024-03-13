@@ -19,12 +19,14 @@ As principais decições estão descritas em cada arquivo README.md, dentro das 
 
 ## Funcionalidades
 
-* **Login**: Autenticação de Email e Anonima
-* **Listagem de Veiculos**: Listagem de veiculos
-* **Requisição Offline**: Cacheia a listagem para exibir offline
-* **Idiomas**: Suporte a Português, Inglês, Espanhol, Francês, Alemão e Japonês
-* **Tema**: Suporte a Tema Escuro e Claro
-* **Testes**: Testes Unitários e Testes de Widgets
+* **Autenticação**: Login de Email e Anonima.
+* **Confirmação de Email**.
+* **Recuperação de Senha**.
+* **Listagem de Veiculos**.
+* **Requisição Offline**: Cacheia a listagem para exibir offline.
+* **Idiomas**: Suporte para Português, Inglês, Espanhol, Francês, Alemão e Japonês.
+* **Tema**: Suporte a Tema Escuro e Claro.
+* **Testes**: Testes Unitários e Testes de Widgets.
 
 ## Como executar
 

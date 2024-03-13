@@ -11,7 +11,11 @@ class ThemeFactory {
 
   final Color surface;
 
+  final Color onSurface;
+
   final Color surfaceVariant;
+
+  final Color onSurfaceVariant;
 
   final Brightness brightness;
 
@@ -20,7 +24,9 @@ class ThemeFactory {
     required this.secondary,
     required this.tertiary,
     required this.surface,
+    required this.onSurface,
     required this.surfaceVariant,
+    required this.onSurfaceVariant,
     required this.brightness,
   });
 
@@ -30,7 +36,9 @@ class ThemeFactory {
       primary: primary,
       secondary: secondary,
       surface: surface,
+      onSurface: onSurface,
       surfaceVariant: surfaceVariant,
+      onSurfaceVariant: onSurfaceVariant,
       brightness: brightness,
     );
   }
@@ -40,16 +48,23 @@ class ThemeFactory {
 
     final colorScheme = getColorScheme();
 
-    textTheme.apply(
-      displayColor: colorScheme.onSurface,
+    var font = GoogleFonts.poppinsTextTheme();
+
+    font = font.apply(
+      displayColor: colorScheme.outlineVariant,
       bodyColor: colorScheme.onSurface,
-      decorationColor: colorScheme.onSurface,
+    );
+
+    font = font.copyWith(
+      bodyLarge: font.bodyLarge?.copyWith(
+        color: colorScheme.outlineVariant,
+      ),
     );
 
     return ThemeData(
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.surface,
-      textTheme: GoogleFonts.poppinsTextTheme(),
+      textTheme: font,
       iconTheme: const IconThemeData(
         size: 24,
       ),
