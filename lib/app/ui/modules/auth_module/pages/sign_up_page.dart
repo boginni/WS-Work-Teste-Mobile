@@ -41,7 +41,7 @@ class SignUpPage extends ListenableWidget {
                 controller: controller.store.emailController,
                 keyboardType: TextInputType.emailAddress,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                autofillHints: const [AutofillHints.email],
+                autofillHints: const [AutofillHints.username, AutofillHints.email],
                 validator: Validatorless.multiple([
                   Validatorless.required(context.appLocalizations.required_field),
                   Validatorless.email(context.appLocalizations.invalid_email),

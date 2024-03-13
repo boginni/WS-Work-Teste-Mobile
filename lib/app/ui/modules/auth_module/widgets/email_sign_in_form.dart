@@ -21,7 +21,7 @@ class EmailSignInForm extends StatelessWidget {
           TextFormField(
             controller: controller.signInStore.emailController,
             keyboardType: TextInputType.emailAddress,
-            autofillHints: const [AutofillHints.email],
+            autofillHints: const [AutofillHints.username, AutofillHints.email],
             validator: (value) => controller.signInStore.emailValidator(
               value,
               context: context,
